@@ -1,0 +1,17 @@
+{% extends "personal/header.html" %}
+
+{% block content %}
+	<li><a href='/'>Home</a></li>
+    <li><a href='/contact/'>Contact</a></li>
+    <li><a href='/familyRecords/enterFamily/'>Add Family</a></li>
+    <li><a href='/familyRecords/enterPerson/'>Add Person</a></li>
+{% endblock %}
+
+{% block moreContent %}
+    {% for family in object_list %}
+        <h5>{{family.name}}<a href=
+                                      "/familyRecords/{{family.id}}"> More Info</a> <a href=
+                                      "/familyRecords/enterPerson"> Add a Member</a></h5>
+    {% endfor %}
+
+{% endblock %}

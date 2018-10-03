@@ -1,0 +1,13 @@
+{% extends "personal/header.html" %}
+
+{% block content %}
+   {% for c in urls %}
+        <li><a href={{c.url}}>{{c.name}}</a></li>
+    {% endfor %}
+{% endblock %}
+
+{% block moreContent %}
+    {% for c in moreContent %}
+        <p>{{c}}</p>
+    {% endfor %}
+{% endblock %}
