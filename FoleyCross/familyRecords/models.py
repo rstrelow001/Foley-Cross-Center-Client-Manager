@@ -41,3 +41,5 @@ class FamilyForm(ModelForm):
     class Meta:
         model = Family
         fields = ['name', 'notes', 'date']
+
+
