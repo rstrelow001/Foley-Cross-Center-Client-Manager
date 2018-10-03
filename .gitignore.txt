@@ -61,8 +61,8 @@ MANIFEST
 *.manifest
 
 *.spec
-
-
+*.pyc
+*.xml
 
 # Installer logs
 
