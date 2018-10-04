@@ -8,6 +8,8 @@ class Family(models.Model):
     name = models.CharField(max_length=140)
     notes = models.TextField()
     date = models.DateTimeField()
+    city = models.CharField(max_length = 200)
+    zip = models.PositiveIntegerField(null=True)
 
     def __str__(self):
         return self.name
@@ -40,6 +42,6 @@ class PersonForm(ModelForm):
 class FamilyForm(ModelForm):
     class Meta:
         model = Family
-        fields = ['name', 'notes', 'date']
+        fields = ['name', 'notes', 'date', 'city', 'zip']
 
 
