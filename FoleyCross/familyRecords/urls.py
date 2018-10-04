@@ -24,6 +24,7 @@ from django.http import HttpRequest
 urlpatterns = [path('', ListView.as_view(queryset=Family.objects.all().order_by("-date")[:25], template_name="familyRecords/families.html")),
                url(r'^(?P<pk>\d+)$', DetailView.as_view(model=Family,
                                                         template_name='familyRecords/members.html')),
-               url(r'^enterPerson/', views.enterPerson, {'family': 1}, name='enterPerson'),
+               url(r'^enterPerson/', views.enterPerson, name='enterPerson'),
                path('enterFamily/', views.enterFamily, name='enterFamily'),
+               path('editPerson/', views.editPerson),
 ]

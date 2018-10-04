@@ -9,9 +9,7 @@
 
 {% block moreContent %}
     {% for family in object_list %}
-        <h5>{{family.name}}<a href=
-                                      "/familyRecords/{{family.id}}"> More Info</a> <a href=
-                                      "/familyRecords/enterPerson"> Add a Member</a></h5>
+        <h5><a href="/familyRecords/{{family.id}}">{{family.name}}</a></h5>
     {% endfor %}
 
 {% endblock %}
