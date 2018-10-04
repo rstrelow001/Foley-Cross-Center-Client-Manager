@@ -18,6 +18,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=140)),
                 ('notes', models.TextField()),
                 ('date', models.DateTimeField()),
+                ('city', models.CharField(max_length = 200))
             ],
         ),
     ]
