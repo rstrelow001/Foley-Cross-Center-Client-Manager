@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <list default="true" id="2dae6386-7b4a-43f9-96f5-3bf0ffdec163" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FoleyCross/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/FoleyCross/db.sqlite3" afterDir="false" />
+    </list>
+=======
     <list default="true" id="2dae6386-7b4a-43f9-96f5-3bf0ffdec163" name="Default Changelist" comment="" />
+>>>>>>> 95005a620e36bd060ad1e4a4e079abc254159734
+=======
+    <list default="true" id="2dae6386-7b4a-43f9-96f5-3bf0ffdec163" name="Default Changelist" comment="" />
+>>>>>>> 95005a620e36bd060ad1e4a4e079abc254159734
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,10 +23,11 @@
     <session id="-1070616086">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -47,7 +59,7 @@
     <session id="-177133092">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.7" value="1" />
@@ -87,8 +99,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+<<<<<<< HEAD
+<<<<<<< HEAD
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/FoleyCross/visitRecords/views.py">
+=======
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/FoleyCross/familyRecords/templates/familyRecords/newFamily.html">
+>>>>>>> 95005a620e36bd060ad1e4a4e079abc254159734
+=======
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/FoleyCross/familyRecords/templates/familyRecords/newFamily.html">
+>>>>>>> 95005a620e36bd060ad1e4a4e079abc254159734
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="323">
               <caret line="19" column="14" lean-forward="true" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
@@ -96,6 +118,13 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
+<<<<<<< HEAD
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/FoleyCross/visitRecords/templates/visitRecords/newVisit.html">
+=======
+=======
+>>>>>>> 95005a620e36bd060ad1e4a4e079abc254159734
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FoleyCross/familyRecords/migrations/0003_family_zip.py">
           <provider selected="true" editor-type-id="text-editor" />
@@ -108,6 +137,10 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
+<<<<<<< HEAD
+>>>>>>> 95005a620e36bd060ad1e4a4e079abc254159734
+=======
+>>>>>>> 95005a620e36bd060ad1e4a4e079abc254159734
           <provider selected="true" editor-type-id="text-editor">
             <state>
               <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
@@ -118,6 +151,16 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FoleyCross/familyRecords/migrations/0001_initial.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+<<<<<<< HEAD
+            <state relative-caret-position="187">
+              <caret line="11" column="73" selection-start-line="11" selection-start-column="73" selection-end-line="11" selection-end-column="73" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
+=======
+=======
+>>>>>>> 95005a620e36bd060ad1e4a4e079abc254159734
             <state relative-caret-position="340">
               <caret line="20" column="60" lean-forward="true" selection-start-line="20" selection-start-column="60" selection-end-line="20" selection-end-column="60" />
             </state>
@@ -129,6 +172,10 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="527">
               <caret line="35" column="62" lean-forward="true" selection-start-line="35" selection-start-column="62" selection-end-line="35" selection-end-column="62" />
+<<<<<<< HEAD
+>>>>>>> 95005a620e36bd060ad1e4a4e079abc254159734
+=======
+>>>>>>> 95005a620e36bd060ad1e4a4e079abc254159734
             </state>
           </provider>
         </entry>
@@ -165,9 +212,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="-8" />
-    <option name="width" value="1163" />
-    <option name="height" value="1038" />
+    <option name="x" value="-9" />
+    <option name="width" value="1164" />
+    <option name="height" value="1039" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -234,10 +281,27 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="0" width="930" height="830" extended-state="0" />
+<<<<<<< HEAD
+    <frame x="-6" y="0" width="930" height="830" extended-state="1" />
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+=======
+=======
+>>>>>>> 95005a620e36bd060ad1e4a4e079abc254159734
+    <frame x="-6" y="0" width="930" height="830" extended-state="0" />
+    <editor active="true" />
+>>>>>>> 7b814d8720aeb8778c2c325f710621e83478c106
+    <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22284435" />
+<<<<<<< HEAD
+>>>>>>> 95005a620e36bd060ad1e4a4e079abc254159734
+=======
+>>>>>>> 95005a620e36bd060ad1e4a4e079abc254159734
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -248,9 +312,19 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.3291536" />
+<<<<<<< HEAD
+<<<<<<< HEAD
+      <window_info active="true" anchor="bottom" id="Python Console" order="8" visible="true" weight="0.07366771" />
+=======
       <window_info anchor="bottom" id="Python Console" order="8" visible="true" weight="0.07604017" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+>>>>>>> 95005a620e36bd060ad1e4a4e079abc254159734
+=======
+      <window_info anchor="bottom" id="Python Console" order="8" visible="true" weight="0.07604017" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+>>>>>>> 95005a620e36bd060ad1e4a4e079abc254159734
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -277,6 +351,29 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/FoleyCross/personal/templates/personal/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="60" column="50" selection-start-line="60" selection-start-column="44" selection-end-line="60" selection-end-column="50" />
+        </state>
+      </provider>
+=======
+    <entry file="file://$PROJECT_DIR$/FoleyCross/familyRecords/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+>>>>>>> 95005a620e36bd060ad1e4a4e079abc254159734
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FoleyCross/familyRecords/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="272">
+          <caret line="16" column="37" lean-forward="true" selection-start-line="16" selection-start-column="37" selection-end-line="16" selection-end-column="37" />
+=======
+        <state relative-caret-position="68">
+          <caret line="4" column="27" lean-forward="true" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
+>>>>>>> 95005a620e36bd060ad1e4a4e079abc254159734
+=======
     <entry file="file://$PROJECT_DIR$/FoleyCross/familyRecords/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -284,6 +381,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="27" lean-forward="true" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
+>>>>>>> 95005a620e36bd060ad1e4a4e079abc254159734
         </state>
       </provider>
     </entry>
@@ -304,11 +402,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/FoleyCross/personal/views.py">
       <provider selected="true" editor-type-id="text-editor" />
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 95005a620e36bd060ad1e4a4e079abc254159734
     </entry>
     <entry file="file://$PROJECT_DIR$/FoleyCross/FoleyCross/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1768" />
       </provider>
+>>>>>>> 95005a620e36bd060ad1e4a4e079abc254159734
     </entry>
     <entry file="file://$PROJECT_DIR$/FoleyCross/personal/templates/personal/home.html">
       <provider selected="true" editor-type-id="text-editor" />
@@ -343,8 +447,18 @@
     </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/site-packages/django/db/migrations/migration.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+<<<<<<< HEAD
+        <state relative-caret-position="748">
+          <caret line="44" lean-forward="true" selection-start-line="44" selection-end-line="44" />
+=======
         <state relative-caret-position="-365">
           <caret line="142" column="17" selection-start-line="142" selection-start-column="17" selection-end-line="142" selection-end-column="17" />
+>>>>>>> 95005a620e36bd060ad1e4a4e079abc254159734
+=======
+        <state relative-caret-position="-365">
+          <caret line="142" column="17" selection-start-line="142" selection-start-column="17" selection-end-line="142" selection-end-column="17" />
+>>>>>>> 95005a620e36bd060ad1e4a4e079abc254159734
         </state>
       </provider>
     </entry>
@@ -356,8 +470,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/FoleyCross/familyRecords/migrations/0002_person.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+<<<<<<< HEAD
+        <state relative-caret-position="66">
+          <caret line="28" column="51" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
+=======
         <state relative-caret-position="306">
           <caret line="19" column="55" lean-forward="true" selection-start-line="19" selection-start-column="55" selection-end-line="19" selection-end-column="55" />
+>>>>>>> 95005a620e36bd060ad1e4a4e079abc254159734
+=======
+        <state relative-caret-position="306">
+          <caret line="19" column="55" lean-forward="true" selection-start-line="19" selection-start-column="55" selection-end-line="19" selection-end-column="55" />
+>>>>>>> 95005a620e36bd060ad1e4a4e079abc254159734
         </state>
       </provider>
     </entry>
@@ -395,8 +519,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/FoleyCross/manage.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+<<<<<<< HEAD
+        <state relative-caret-position="170">
+          <caret line="10" column="53" selection-start-line="10" selection-start-column="53" selection-end-line="10" selection-end-column="70" />
+=======
         <state relative-caret-position="238">
           <caret line="15" selection-start-line="15" selection-end-line="15" />
+>>>>>>> 95005a620e36bd060ad1e4a4e079abc254159734
+=======
+        <state relative-caret-position="238">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+>>>>>>> 95005a620e36bd060ad1e4a4e079abc254159734
         </state>
       </provider>
     </entry>
@@ -404,6 +538,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+<<<<<<< HEAD
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/FoleyCross/visitRecords/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="49" selection-start-line="24" selection-start-column="49" selection-end-line="24" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
+          </folding>
+=======
+>>>>>>> 95005a620e36bd060ad1e4a4e079abc254159734
         </state>
       </provider>
     </entry>
@@ -415,8 +563,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/FoleyCross/familyRecords/migrations/0001_initial.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="187">
+          <caret line="11" column="73" selection-start-line="11" selection-start-column="73" selection-end-line="11" selection-end-column="73" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+=======
+    <entry file="file://$PROJECT_DIR$/FoleyCross/familyRecords/migrations/0003_family_zip.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FoleyCross/familyRecords/views.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FoleyCross/familyRecords/migrations/0001_initial.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="20" column="60" lean-forward="true" selection-start-line="20" selection-start-column="60" selection-end-line="20" selection-end-column="60" />
+>>>>>>> 95005a620e36bd060ad1e4a4e079abc254159734
+=======
+        <state relative-caret-position="340">
+          <caret line="20" column="60" lean-forward="true" selection-start-line="20" selection-start-column="60" selection-end-line="20" selection-end-column="60" />
+>>>>>>> 95005a620e36bd060ad1e4a4e079abc254159734
         </state>
       </provider>
     </entry>
@@ -430,6 +598,11 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 95005a620e36bd060ad1e4a4e079abc254159734
     <entry file="file://$PROJECT_DIR$/FoleyCross/familyRecords/templates/familyRecords/newFamily.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -437,5 +610,6 @@
         </state>
       </provider>
     </entry>
+>>>>>>> 95005a620e36bd060ad1e4a4e079abc254159734
   </component>
 </project>
