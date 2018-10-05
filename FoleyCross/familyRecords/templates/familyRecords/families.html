@@ -3,13 +3,12 @@
 {% block content %}
 	<li><a href='/'>Home</a></li>
     <li><a href='/contact/'>Contact</a></li>
-    <li><a href='/familyRecords/enterFamily/'>Add Family</a></li>
-    <li><a href='/familyRecords/enterPerson/'>Add Person</a></li>
 {% endblock %}
 
 {% block moreContent %}
+    <a href='/familyRecords/newFamily/'>Add a Family</a>
     {% for family in object_list %}
-        <h5><a href="/familyRecords/{{family.id}}">{{family.name}}</a></h5>
+        <h5><a href="/familyRecords/updateFamily/?id={{family.id}}">{{family.name}}</a></h5>
     {% endfor %}
 
 {% endblock %}

@@ -5,10 +5,19 @@ from django.forms import ModelForm
 from django import forms
 
 class Family(models.Model):
+    FOLEY = "Foley"
+    FORESTON  = "Foreston"
+    GILMAN = "Gilman"
+    CITY_CHOICES =  (
+        (FOLEY, "Foley"),
+        (FORESTON, "Foreston"),
+        (GILMAN, "Gilman")
+    )
     name = models.CharField(max_length=140)
     notes = models.TextField()
     date = models.DateTimeField()
-    city = models.CharField(max_length = 200)
+    city = models.CharField(max_length = 50,
+                            choices=CITY_CHOICES)
     zip = models.PositiveIntegerField(null=True)
 
     def __str__(self):

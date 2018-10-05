@@ -59,7 +59,7 @@
     <session id="-177133092">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.7" value="1" />
@@ -212,9 +212,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="-8" />
-    <option name="width" value="1163" />
-    <option name="height" value="1038" />
+    <option name="x" value="-9" />
+    <option name="width" value="1164" />
+    <option name="height" value="1039" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -282,6 +282,9 @@
   </component>
   <component name="ToolWindowManager">
 <<<<<<< HEAD
+    <frame x="-6" y="0" width="930" height="830" extended-state="1" />
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
@@ -292,6 +295,7 @@
 >>>>>>> 95005a620e36bd060ad1e4a4e079abc254159734
     <frame x="-6" y="0" width="930" height="830" extended-state="0" />
     <editor active="true" />
+>>>>>>> 7b814d8720aeb8778c2c325f710621e83478c106
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22284435" />
 <<<<<<< HEAD
