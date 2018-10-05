@@ -45,7 +45,7 @@ def visitsByFamily(request):
         family_name = request.GET.get('f_name', '')
         family = Family.objects.get(pk=family_id)
         visits = family.visit_set.all()
-    return render(request, 'visitRecords/visitsByFamily.html', {'visits': visits})
+    return render(request, 'visitRecords/visitsByFamily.html', {'visits': visits, 'f_name': family_name})
 
 
 def visitSummary(request):
@@ -64,10 +64,7 @@ def visitSummary(request):
 
     # if a GET (or any other method) we'll create a blank form
     else:
-        visit_id = request.GET.get('id', '')
-        #visit = Visit.objects.get(pk=visit_id)
-        #visits = visit.visit_set.all()
-    return render(request, 'visitRecords/visitsByFamily.html', {'visits': visit_id})
 
+        notes = request.GET.get('n', '')
 
-
+    return render(request, 'visitRecords/visitSummary.html', {'notes': notes})

@@ -7,8 +7,9 @@
 {% endblock %}
 
 {% block moreContent %}
+    <h5>{{f_name}}</h5>
     {% for visit in visits %}
-    <h5><a>{{visit.date}}</a><a href="/visitRecords/visitSummary/?id={{visit.id}}" >  More Info</a></a></h5>
+    <h5><a>{{visit.date}}, Pounds of Food: {{visit.pounds_of_food}}</a><a href="/visitRecords/visitSummary/?n={{visit.visit_notes}}" >  Notes</a></a></h5>
     {% endfor %}
 
 {% endblock %}
