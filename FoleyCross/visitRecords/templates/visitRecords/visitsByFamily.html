@@ -7,8 +7,8 @@
 {% endblock %}
 
 {% block moreContent %}
-    {% for family in object_list %}
-        <h5><a href="/visitRecords/visitsByFamily/?id={{family.id}}&f_name={{family.name}}">{{family.name}}</a></h5>
+    {% for visit in visits %}
+    <h5><a>{{visit.date}}</a><a href="/visitRecords/visitSummary/?id={{visit.id}}" >  More Info</a></a></h5>
     {% endfor %}
 
 {% endblock %}
