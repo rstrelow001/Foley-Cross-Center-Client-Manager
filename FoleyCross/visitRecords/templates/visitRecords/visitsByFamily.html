@@ -7,9 +7,9 @@
 {% endblock %}
 
 {% block moreContent %}
-    <a href='/visitRecords/enterVisit/'>Add Visit</a>
-    {% for family in object_list %}
-        <h5><a href="/visitRecords/visitsByFamily/?id={{family.id}}&f_name={{family.name}}">{{family.name}}</a></h5>
+    <h5>{{f_name}}</h5>
+    {% for visit in visits %}
+    <h5><a>{{visit.date}}, Pounds of Food: {{visit.pounds_of_food}}</a><a href="/visitRecords/visitSummary/?n={{visit.visit_notes}}" >  Notes</a></a></h5>
     {% endfor %}
 
 {% endblock %}

@@ -7,9 +7,6 @@
 {% endblock %}
 
 {% block moreContent %}
-    <a href='/visitRecords/enterVisit/'>Add Visit</a>
-    {% for family in object_list %}
-        <h5><a href="/visitRecords/visitsByFamily/?id={{family.id}}&f_name={{family.name}}">{{family.name}}</a></h5>
-    {% endfor %}
+    <h5>{{notes}}</h5>
 
 {% endblock %}
