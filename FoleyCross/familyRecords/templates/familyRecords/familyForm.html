@@ -11,8 +11,27 @@
     {% csrf_token %}
     <h3>Name:  {{ form.name }} </h3>
     <h3>Date:  {{ form.date }} </h3>
+    <h3>Proof of Address:  {{ form.proof_of_address }} </h3>
+    <h3>Primary Contact:  </h3>
+    <h3>Address:  {{form.address}}</h3>
     <h3>City:  {{ form.city }} </h3>
     <h3>Zip Code  {{ form.zip }} </h3>
+    <h3>Phone #: {{form.phone}}</h3><h3></h3>
+    <h3>MFIP:  {{form.mfip}}</h3>
+    <h3>WIC:  {{form.wic}}</h3>
+    <h3>General Assist:  {{form.general_assist}}</h3>
+    <h3>Workers Comp:  {{form.workers_comp}}</h3>
+    <h3>Pension:  {{form.pension}}</h3>
+    <h3>Social Security: {{form.social_security}}</h3>
+    <h3>SSI: {{form.ssi}}</h3>
+    <h3>Fuel Assist: {{form.fuel_assist}}</h3>
+    <h3>Child Support: {{form.child_support}}</h3>
+    <h3>SNAP: {{form.snap}}</h3>
+    <h3>Unemployment: {{form.unemployment}}</h3>
+    <h3>Wages: {{form.wages1}}</h3>
+    <h3>Wages: {{form.wages2}}</h3>
+    <h3>Medical Insurance/Assistance: {{form.insurance_assistance}}</h3>
+    <h3>Monthly Totals:  {{ form.monthly_total }} </h3>
     <h3>Notes:  {{ form.notes }} </h3>
 
     <input type="submit" value="Submit">

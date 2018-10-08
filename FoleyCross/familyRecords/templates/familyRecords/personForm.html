@@ -9,8 +9,13 @@
 {% block moreContent %}
 <form action="" method="post">
     {% csrf_token %}
-    <h3>Name:  {{ form.name }} </h3>
+    <h3>First Name:  {{ form.first_name }} </h3>
+    <h3>Last Name:  {{ form.last_name }} </h3>
     <h3>Birthday:  {{ form.birthday }} </h3>
+    <h3>Race:  {{ form.race }} </h3>
+    <h3>Gender:  {{ form.gender }} </h3>
+    <h3>Service:  {{ form.service }} </h3>
+    <h3>Status:  {{ form.status }} </h3>
     <h3>Family:  {{ form.family }} </h3>
     <input type="submit" value="Submit">
 </form>
