@@ -8,7 +8,7 @@
 {% block moreContent %}
     <a href='/familyRecords/newFamily/'>Add a Family</a>
     {% for family in object_list %}
-        <h5><a href="/familyRecords/updateFamily/?id={{family.id}}">{{family.name}}</a></h5>
+        <h5><a href="/familyRecords/updateFamily/?id={{family.id}}">{{family.primary_contact_last_name}}, {{family.primary_contact_first_name}}</a></h5>
     {% endfor %}
 
 {% endblock %}

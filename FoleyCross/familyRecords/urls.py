@@ -21,7 +21,7 @@ from .models import Person, Family
 from django.http import HttpResponseRedirect
 from django.http import HttpRequest
 
-urlpatterns = [path('', ListView.as_view(queryset=Family.objects.all().order_by("-date")[:25], template_name="familyRecords/families.html")),
+urlpatterns = [path('', ListView.as_view(queryset=Family.objects.all().order_by("primary_contact_last_name", "primary_contact_first_name")[:25], template_name="familyRecords/families.html")),
                url(r'^updateFamily', views.updateFamily),
                url(r'^newPerson/', views.newPerson, name='newPerson'),
                path('newFamily/', views.newFamily, name='newFamily'),

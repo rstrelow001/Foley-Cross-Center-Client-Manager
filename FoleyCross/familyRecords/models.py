@@ -47,7 +47,8 @@ class Family(models.Model):
         (ASSISTANCE, "Assistance")
     )
 
-    name = models.CharField(max_length=140)
+    primary_contact_first_name = models.CharField(max_length=140)
+    primary_contact_last_name = models.CharField(max_length=140)
     proof_of_address = models.CharField(max_length = 10,
                             choices=YES_NO_CHOICES)
     notes = models.TextField()
@@ -77,13 +78,13 @@ class Family(models.Model):
                             choices=INSURANCE_ASSISTANCE_CHOICES)
 
     def __str__(self):
-        return self.name
+        return self.primary_contact_last_name + ", " + self.primary_contact_first_name
 
 
 class FamilyForm(ModelForm):
     class Meta:
         model = Family
-        fields = ['name', 'proof_of_address', 'notes', 'address',
+        fields = ['primary_contact_first_name', 'primary_contact_last_name', 'proof_of_address', 'notes', 'address',
                   'date', 'city', 'zip', 'phone', 'mfip', 'wic',
                   'general_assist', 'workers_comp', 'pension', 'social_security',
                   'ssi', 'fuel_assist', 'child_support', 'snap', 'unemployment',
@@ -108,21 +109,21 @@ class Person(models.Model):
 
     W = "W"
     B = "B"
+    NA = "NA"
     A = "A"
     H = "H"
-    N = "N"
-    P = "P"
+    NH = "NH"
     T = "T"
     O = "O"
     RACE_CHOICES = (
-        (W, "W"),
-        (B, "B"),
-        (A, "A"),
-        (H, "H"),
-        (N, "N"),
-        (P, "P"),
-        (T, "T"),
-        (O, "O")
+        (W, "White"),
+        (B, "Black or African American"),
+        (NA, "Native American or Alaska Native"),
+        (A, "Asian"),
+        (NH, "Native Hawaiian or Other Pacific Islander"),
+        (H, "Hispanic, Latino or Spanish Origin"),
+        (T, "Two or More Races"),
+        (O, "Other Race")
     )
 
     MALE = "Male"
