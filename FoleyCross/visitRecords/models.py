@@ -5,7 +5,7 @@ from django import forms
 from familyRecords.models import Family
 import datetime
 
-
+'''
 class Visit(models.Model):
     family = models.ForeignKey(Family, on_delete=models.CASCADE)
     date = models.DateTimeField()
@@ -20,3 +20,4 @@ class VisitForm(ModelForm):
     class Meta:
         model = Visit
         fields = ['family', 'date', 'pounds_of_food', 'visit_notes']
+'''

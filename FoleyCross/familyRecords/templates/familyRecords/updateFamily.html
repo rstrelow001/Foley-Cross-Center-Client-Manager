@@ -11,6 +11,14 @@
     {% csrf_token %}
      <h3>Primary Contact (First Name  Last Name):  {{ form.primary_contact_first_name }} {{form.primary_contact_last_name}} </h3>
     <h3>ID:  {{ family.id }} </h3>
+    <h3>Members:  <a href='/familyRecords/newPerson/?familyid={{family.id}}'> Add a Member</a></h3>
+        {%for person in members %}
+    <h5>{{person}}  <a href='/familyRecords/updatePerson/?personid={{person.id}}&familyid={{person.family.id}}'>Edit</a></h5>
+    {% endfor %}
+    <h3>Visits:  <a href='/familyRecords/newVisit/?familyid={{family.id}}'> Add a Visit</a></h3>
+        {%for visit in visits %}
+    <h5>{{visit}} Pounds of Food: {{visit.pounds_of_food}} </h5>
+    {% endfor %}
     <h3>Date:  {{ form.date }} </h3>
     <h3>Proof of Address:  {{ form.proof_of_address }} </h3>
     <h3>Address:  {{form.address}}</h3>
@@ -32,10 +40,7 @@
     <h3>Wages: {{form.wages2}}</h3>
     <h3>Medical Insurance/Assistance: {{form.insurance_assistance}}</h3>
     <h3>Monthly Totals:  {{ form.monthly_total }} </h3>
-    <h3>Members:  <a href='/familyRecords/newPerson/?familyid={{family.id}}'> Add a Member</a></h3>
-        {%for person in members %}
-    <h5>{{person}}  <a href='/familyRecords/updatePerson/?personid={{person.id}}&familyid={{person.family.id}}'>Edit</a></h5>
-    {% endfor %}
+
     <h3>Notes:  {{ form.notes }} </h3>
 
     <input type="submit" value="Submit">

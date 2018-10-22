@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django import forms
 
-from .models import PersonForm, FamilyForm, Person, Family
+from .models import PersonForm, FamilyForm, Person, Family, VisitForm, Visit
 from .controllers import SearchController
 
 
@@ -108,12 +108,39 @@ def updateFamily(request):
         family=Family.objects.get(pk=family_id)
         familyForm = FamilyForm(instance=family)
         members= family.person_set.all()
+        visits = family.visit_set.all()
         forms = []
         for person in members:
             newPerson = PersonForm(instance=person)
             forms.append(newPerson)
 
-    return render(request, 'familyRecords/updateFamily.html', {'form': familyForm, 'family': family, 'members': members})
+    return render(request, 'familyRecords/updateFamily.html', {'form': familyForm, 'family': family, 'members': members, 'visits': visits})
+
+
+
+def newVisit(request):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = VisitForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            # ...
+            # redirect to a new URL:
+            id = request.GET.get('familyid', '')
+            newForm = form.save(commit=False)
+            newForm.save()
+            return HttpResponseRedirect('../updateFamily/?id=' + id)
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        '''person = Person.objects.get(pk=1)'''
+        id= request.GET.get('familyid', '')
+        results = Family.objects.filter(pk=id)
+        form = VisitForm(family=forms.ModelChoiceField(queryset=results.all(), initial=1))
+
+    return render(request, 'familyRecords/newVisit.html', {'form': form})
 
 
 def searchFamily(request):

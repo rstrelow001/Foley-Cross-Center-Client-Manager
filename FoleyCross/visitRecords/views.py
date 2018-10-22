@@ -1,9 +1,10 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django import forms
-from .models import VisitForm, Visit
+#from .models import VisitForm, Visit
 from familyRecords.models import Family
 
+'''
 def enterVisit(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
@@ -68,3 +69,4 @@ def visitSummary(request):
         notes = request.GET.get('n', '')
 
     return render(request, 'visitRecords/visitSummary.html', {'notes': notes})
+'''

@@ -3,11 +3,10 @@
 {% block content %}
 	<li><a href='/'>Home</a></li>
     <li><a href='/contact/'>Contact</a></li>
-    <li><a href='/familyRecords/'>Family Records</a></li>
+    <li><a href='/visitRecords/enterVisit/'>Add Visit</a></li>
 {% endblock %}
 
 {% block moreContent %}
-<p>Hey, welcome to the Foley Cross Center Client Manager!</p>
+    <h5>{{notes}}</h5>
 
-{% include "personal/includes/htmlsnippet.html" %}
 {% endblock %}
