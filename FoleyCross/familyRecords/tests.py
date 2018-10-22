@@ -57,3 +57,13 @@ class SearchTestCase(TestCase):
         matches = sc.searchByName("", "Konsors")
         self.assertEqual(0, len(matches))
 
+    def test_searchByID(self):
+        sc = SearchController()
+        family = Family.objects.get(pk=1)
+        matches = sc.searchByID(1)
+        self.assertEqual(family, matches[0])
+
+    def test_searchByID_returns_nothing(self):
+        sc = SearchController()
+        matches = sc.searchByID(0)
+        self.assertEqual(0, len(matches))

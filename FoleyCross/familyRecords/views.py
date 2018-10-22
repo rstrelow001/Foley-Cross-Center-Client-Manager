@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django import forms
 
 from .models import PersonForm, FamilyForm, Person, Family
+from .controllers import SearchController
 
 
 
@@ -113,3 +114,26 @@ def updateFamily(request):
             forms.append(newPerson)
 
     return render(request, 'familyRecords/updateFamily.html', {'form': familyForm, 'family': family, 'members': members})
+
+
+def searchFamily(request):
+    # if this is a POST request we need to process the form data
+    if request.method == 'GET':
+
+        sc = SearchController()
+        first_name = request.GET.get('first_name', '')
+        last_name = request.GET.get('last_name','')
+        family_id = request.GET.get('family_id')
+
+        if (len(first_name) == 0 and len(last_name) == 0 and len(family_id) == 0):
+            matches = Family.objects.all().order_by("primary_contact_last_name", "primary_contact_first_name")
+        elif (len(family_id) == 0):
+            matches = sc.searchByName(first_name, last_name)
+        else:
+            matches = sc.searchByID(int(family_id))
+
+    else:
+        matches = Family.objects.all().order_by("primary_contact_last_name", "primary_contact_first_name")
+
+
+    return render(request, 'familyRecords/families.html', {'object_list': matches})

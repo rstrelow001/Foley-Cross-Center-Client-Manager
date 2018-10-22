@@ -6,6 +6,14 @@
 {% endblock %}
 
 {% block moreContent %}
+    <form action="/familyRecords/search" method="get">
+        {% csrf_token %}
+        <h5>First Name: <input type="text" value="" name = "first_name"></h5>
+        <h5>Last Name: <input type="text" value="" name = "last_name"></h5>
+        <h5>Family ID: <input type="number" name = "family_id"></h5>
+        <input type="submit" value="Submit">
+    </form>
+
     <a href='/familyRecords/newFamily/'>Add a Family</a>
     {% for family in object_list %}
         <h5><a href="/familyRecords/updateFamily/?id={{family.id}}">{{family.primary_contact_last_name}}, {{family.primary_contact_first_name}}</a></h5>
