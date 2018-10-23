@@ -1,0 +1,36 @@
+{% extends "personal/header.html" %}
+
+{% block content %}
+	<li><a href='/'>Home</a></li>
+    <li><a href='/contact/'>Contact</a></li>
+{% endblock %}
+
+{% block moreContent %}
+<form action="" method="post">
+    {% csrf_token %}
+    <h5>Please choose a Month and Year to run a report</h5>
+    <br>
+    <h6>Month</h6>
+    <select name="Month">
+        <option value="-1">Full Year</option>
+        <option value="1">January</option>
+        <option value="2">February</option>
+        <option value="3">March</option>
+        <option value="4">April</option>
+        <option value="5">May</option>
+        <option value="6">June</option>
+        <option value="7">July</option>
+        <option value="8">August</option>
+        <option value="9">September</option>
+        <option value="10">October</option>
+        <option value="11">November</option>
+        <option value="12">December</option>
+    </select>
+    <br><br>
+    <h6>Year</h6>
+    <h6><input name="Year" placeholder="XXXX"></h6>
+    <br>
+    <input type="submit" value="Run Report">
+</form>
+
+{% endblock %}

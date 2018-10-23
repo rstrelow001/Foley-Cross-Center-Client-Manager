@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'personal',
     'familyRecords',
     'visitRecords',
+    'reports',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
