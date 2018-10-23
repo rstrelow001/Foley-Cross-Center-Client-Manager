@@ -3,6 +3,8 @@ from django.db import models
 from django.db import models
 from django.forms import ModelForm
 from django import forms
+import datetime
+from math import floor
 
 class Family(models.Model):
     FOLEY = "Foley"
@@ -146,16 +148,22 @@ class Person(models.Model):
     def __str__(self):
         return self.first_name + " " + self.last_name
 
+    def age(self):
+            difference = datetime.datetime.now(datetime.timezone.utc)-self.birthday
+            return floor(difference.days/365)
+
 class PersonForm(ModelForm):
     class Meta:
         model = Person
         fields = ['first_name', 'last_name', 'birthday', 'race',
                   'gender', 'service', 'status', 'family']
+        age = forms.IntegerField()
 
     def __init__(self, *args, **kwargs):
         person_details = kwargs.pop('family', None)
         super().__init__(*args, **kwargs)
         self.fields['birthday'].widget.attrs.update(size='20')
+        self.age = self.instance.age()
         if person_details:
             self.fields['family'] = person_details
 
