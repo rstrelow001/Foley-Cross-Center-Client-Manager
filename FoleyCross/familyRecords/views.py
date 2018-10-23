@@ -2,7 +2,8 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django import forms
 
-from .models import PersonForm, FamilyForm, Person, Family
+from .models import PersonForm, FamilyForm, Person, Family, VisitForm, Visit
+from .controllers import SearchController
 
 
 
@@ -107,9 +108,128 @@ def updateFamily(request):
         family=Family.objects.get(pk=family_id)
         familyForm = FamilyForm(instance=family)
         members= family.person_set.all()
+        visits = family.visit_set.all()
         forms = []
         for person in members:
             newPerson = PersonForm(instance=person)
             forms.append(newPerson)
 
-    return render(request, 'familyRecords/updateFamily.html', {'form': familyForm, 'family': family, 'members': members})
+    return render(request, 'familyRecords/updateFamily.html', {'form': familyForm, 'family': family, 'members': members, 'visits': visits})
+
+
+
+def newVisit(request):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = VisitForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            # ...
+            # redirect to a new URL:
+            id = request.GET.get('familyid', '')
+            newForm = form.save(commit=False)
+            newForm.save()
+            return HttpResponseRedirect('../updateFamily/?id=' + id)
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        '''person = Person.objects.get(pk=1)'''
+        id= request.GET.get('familyid', '')
+        results = Family.objects.filter(pk=id)
+        form = VisitForm(family=forms.ModelChoiceField(queryset=results.all(), initial=1))
+
+    return render(request, 'familyRecords/newVisit.html', {'form': form})
+
+
+def searchFamily(request):
+    # if this is a POST request we need to process the form data
+    if request.method == 'GET':
+
+        sc = SearchController()
+        first_name = request.GET.get('first_name', '')
+        last_name = request.GET.get('last_name','')
+        family_id = request.GET.get('family_id')
+
+        if (len(first_name) == 0 and len(last_name) == 0 and len(family_id) == 0):
+            matches = Family.objects.all().order_by("primary_contact_last_name", "primary_contact_first_name")
+        elif (len(family_id) == 0):
+            matches = sc.searchByName(first_name, last_name)
+        else:
+            matches = sc.searchByID(int(family_id))
+
+    else:
+        matches = Family.objects.all().order_by("primary_contact_last_name", "primary_contact_first_name")
+
+
+    return render(request, 'familyRecords/families.html', {'object_list': matches})
+
+
+
+'''
+def enterVisit(request):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = VisitForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            # ...
+            # redirect to a new URL:
+            newForm = form.save(commit=False)
+            newForm.save()
+            return HttpResponseRedirect('..')
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = VisitForm()
+
+    return render(request, 'visitRecords/newVisit.html', {'form': form})
+
+
+def visitsByFamily(request):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = VisitForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            # ...
+            # redirect to a new URL:
+            newForm = form.save(commit=False)
+            newForm.save()
+            return HttpResponseRedirect('..')
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        family_id = request.GET.get('id', '')
+        family_name = request.GET.get('f_name', '')
+        family = Family.objects.get(pk=family_id)
+        visits = family.visit_set.all()
+    return render(request, 'visitRecords/visitsByFamily.html', {'visits': visits, 'f_name': family_name})
+
+
+def visitSummary(request):
+    # if this is a POST request we need to process the form data
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = VisitForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            # ...
+            # redirect to a new URL:
+            newForm = form.save(commit=False)
+            newForm.save()
+            return HttpResponseRedirect('..')
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+
+        notes = request.GET.get('n', '')
+
+    return render(request, 'visitRecords/visitSummary.html', {'notes': notes})
+'''
