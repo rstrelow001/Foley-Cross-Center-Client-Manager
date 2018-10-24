@@ -162,7 +162,6 @@ class PersonForm(ModelForm):
     def __init__(self, *args, **kwargs):
         person_details = kwargs.pop('family', None)
         super().__init__(*args, **kwargs)
-        self.fields['birthday'].widget.attrs.update(size='20')
         self.age = self.instance.age()
         if person_details:
             self.fields['family'] = person_details
@@ -190,8 +189,6 @@ class Visit(models.Model):
     total_race_two_plus = models.IntegerField(default=0)
     total_race_other = models.IntegerField(default=0)
     city = models.CharField(max_length=140, default= "Foley")
-
-
 
 
     def __str__(self):
