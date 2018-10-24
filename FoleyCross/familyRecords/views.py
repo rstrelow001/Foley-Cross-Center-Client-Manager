@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django import forms
 
 from .models import PersonForm, FamilyForm, Person, Family, VisitForm, Visit
-from .controllers import SearchController, VisitController
+from .controllers import SearchController, VisitController,FamilyController
 
 
 
@@ -75,6 +75,14 @@ def newFamily(request):
             # redirect to a new URL:
             newForm = form.save(commit=False)
             newForm.save()
+
+
+            fam_updated = Family.objects.get(primary_contact_first_name = form.cleaned_data['primary_contact_first_name'], primary_contact_last_name = form.cleaned_data['primary_contact_last_name'])
+            fc = FamilyController()
+            fam_updated.monthly_total = fc.count_monthly_total(fam_updated)
+            form = FamilyForm(instance=fam_updated)
+            newForm = form.save(commit=False)
+            newForm.save()
             return HttpResponseRedirect('..')
 
     # if a GET (or any other method) we'll create a blank form
@@ -98,6 +106,12 @@ def updateFamily(request):
             family_id = request.GET.get('id', '')
             family = Family.objects.get(pk=family_id)
             form = FamilyForm(request.POST, instance=family)
+            form.save()
+
+            fam_updated = Family.objects.get(pk=family_id)
+            fc = FamilyController()
+            fam_updated.monthly_total = fc.count_monthly_total(fam_updated)
+            form = FamilyForm(instance=fam_updated)
             newForm = form.save(commit=False)
             newForm.save()
             return HttpResponseRedirect('..')
