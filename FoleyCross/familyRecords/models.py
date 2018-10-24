@@ -171,7 +171,7 @@ class PersonForm(ModelForm):
 
 class Visit(models.Model):
     family = models.ForeignKey(Family, on_delete=models.CASCADE)
-    date = models.DateTimeField()
+    date = models.DateTimeField(default = datetime.datetime.now(datetime.timezone.utc))
     pounds_of_food = models.DecimalField(decimal_places=2, max_digits=10)
     visit_notes = models.TextField()
     total_active_people = models.IntegerField(default=4)
@@ -202,7 +202,7 @@ class VisitForm(ModelForm):
     class Meta:
         model = Visit
         fields = ['family', 'date', 'pounds_of_food', 'visit_notes', 'total_active_people',
-        'total_0_5', 'total_6_17', 'total_18_24', 'total_25_44', 'total_45_64', 'total_65_plus',
+                  'total_0_5', 'total_6_17', 'total_18_24', 'total_25_44', 'total_45_64', 'total_65_plus',
                   'total_race_white', 'total_race_black', 'total_race_asian', 'total_race_hispanic',
                   'total_race_nativeAm', 'total_race_hawaiian', 'total_race_two_plus', 'total_race_other',
                   'city']
