@@ -174,6 +174,25 @@ class Visit(models.Model):
     date = models.DateTimeField()
     pounds_of_food = models.DecimalField(decimal_places=2, max_digits=10)
     visit_notes = models.TextField()
+    total_active_people = models.IntegerField(default=4)
+    total_0_5 = models.IntegerField(default=0)
+    total_6_17 = models.IntegerField(default=0)
+    total_18_24 = models.IntegerField(default=0)
+    total_25_44 = models.IntegerField(default=0)
+    total_45_64 = models.IntegerField(default=0)
+    total_65_plus = models.IntegerField(default=0)
+    total_race_white = models.IntegerField(default=0)
+    total_race_black = models.IntegerField(default=0)
+    total_race_asian = models.IntegerField(default=0)
+    total_race_hispanic = models.IntegerField(default=0)
+    total_race_nativeAm = models.IntegerField(default=0)
+    total_race_hawaiian = models.IntegerField(default=0)
+    total_race_two_plus = models.IntegerField(default=0)
+    total_race_other = models.IntegerField(default=0)
+    city = models.CharField(max_length=140, default= "Foley")
+
+
+
 
     def __str__(self):
         return str(self.date)
@@ -182,7 +201,11 @@ class Visit(models.Model):
 class VisitForm(ModelForm):
     class Meta:
         model = Visit
-        fields = ['family', 'date', 'pounds_of_food', 'visit_notes']
+        fields = ['family', 'date', 'pounds_of_food', 'visit_notes', 'total_active_people',
+        'total_0_5', 'total_6_17', 'total_18_24', 'total_25_44', 'total_45_64', 'total_65_plus',
+                  'total_race_white', 'total_race_black', 'total_race_asian', 'total_race_hispanic',
+                  'total_race_nativeAm', 'total_race_hawaiian', 'total_race_two_plus', 'total_race_other',
+                  'city']
 
     def __init__(self, *args, **kwargs):
         person_details = kwargs.pop('family', None)
