@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django import forms
 
 from .models import PersonForm, FamilyForm, Person, Family, VisitForm, Visit
-from .controllers import SearchController
+from .controllers import SearchController, VisitController
 
 
 
@@ -129,6 +129,17 @@ def newVisit(request):
             # ...
             # redirect to a new URL:
             id = request.GET.get('familyid', '')
+            family = Family.objects.get(pk=id)
+
+            #vc = VisitController()
+            #total_active = vc.countActiveMembers(family)
+            #total_0_5 = vc.countAgeGroup(family, 0, 5)
+            #total_6_17 = vc.countAgeGroup(family, 6, 17)
+            #total_18_24 = vc.countAgeGroup(family, 18, 24)
+            #total_25_44 = vc.countAgeGroup(family, 25, 44)
+            #total_45_64 = vc.countAgeGroup(family, 45, 64)
+            #total_65_plus = vc.countAgeGroup(family, 65, 130)
+
             newForm = form.save(commit=False)
             newForm.save()
             return HttpResponseRedirect('../updateFamily/?id=' + id)
