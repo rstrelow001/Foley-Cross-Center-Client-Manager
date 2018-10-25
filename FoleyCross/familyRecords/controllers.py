@@ -23,3 +23,31 @@ class SearchController():
 
         results = Family.objects.filter(pk=family_id)
         return results
+
+
+class VisitController():
+
+    #takes a family object and returns the number of active members in the family
+    def countActiveMembers(self, family):
+        return 0
+
+    #takes a family object and counts the number of active members between the lower and upper bound
+    def countAgeGroup(self, family, lowerBound, upperBound):
+       return 0
+
+    #takes a family object and returns the city for the family
+    def getCity(self, family):
+        return "Foley"
+
+    #takes a family object and counts the number of active members for the speciified race
+    def countNumberOfRace(self, family, race):
+        return 0
+
+
+class FamilyController:
+
+    def count_monthly_total(self, family):
+        return (family.mfip + family.wic + family.general_assist + family.workers_comp + family.pension +
+                family.social_security + family.ssi + family.fuel_assist + family.child_support +
+                family.snap + family.unemployment + family.wages1 + family.wages2 )
+

@@ -13,6 +13,24 @@
     <h3>Date:  {{ form.date }} </h3>
     <h3>Pounds: {{form.pounds_of_food }} </h3>
     <h3>Notes:  {{ form.visit_notes }} </h3>
+    {{ form.total_active_people.as_hidden }}
+    {{ form.total_0_5.as_hidden }}
+    {{ form.total_6_17.as_hidden }}
+    {{ form.total_18_24.as_hidden }}
+    {{ form.total_25_44.as_hidden }}
+    {{ form.total_45_64.as_hidden }}
+    {{ form.total_65_plus.as_hidden }}
+    {{ form.total_race_white.as_hidden }}
+    {{ form.total_race_black.as_hidden }}
+    {{ form.total_race_hispanic.as_hidden }}
+    {{ form.total_race_asian.as_hidden }}
+    {{ form.total_race_nativeAm.as_hidden }}
+    {{ form.total_race_hawaiian.as_hidden }}
+    {{ form.total_race_two_plus.as_hidden }}
+    {{ form.total_race_other.as_hidden }}
+    {{ form.city.as_hidden }}
+
+
     <input type="submit" value="Submit">
 </form>
 {% endblock %}

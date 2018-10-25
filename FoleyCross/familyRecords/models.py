@@ -53,28 +53,28 @@ class Family(models.Model):
     primary_contact_last_name = models.CharField(max_length=140)
     proof_of_address = models.CharField(max_length = 10,
                             choices=YES_NO_CHOICES)
-    notes = models.TextField()
+    notes = models.TextField(default = "NA")
     address = models.CharField(max_length = 100, default="")
-    date = models.DateTimeField()
+    date = models.DateTimeField(default = datetime.date.today())
     city = models.CharField(max_length = 50,
                             choices=CITY_CHOICES)
     zip = models.PositiveIntegerField(null=True)
     phone = models.PositiveIntegerField(null=True)
 
-    mfip = models.DecimalField(max_digits=10, decimal_places=2)
-    wic = models.DecimalField(max_digits=10, decimal_places=2)
-    general_assist = models.DecimalField(max_digits=10, decimal_places=2)
-    workers_comp = models.DecimalField(max_digits=10, decimal_places=2)
-    pension = models.DecimalField(max_digits=10, decimal_places=2)
-    social_security = models.DecimalField(max_digits=10, decimal_places=2)
-    ssi = models.DecimalField(max_digits=10, decimal_places=2)
-    fuel_assist = models.DecimalField(max_digits=10, decimal_places=2)
-    child_support = models.DecimalField(max_digits=10, decimal_places=2)
-    snap = models.DecimalField(max_digits=10, decimal_places=2)
-    unemployment = models.DecimalField(max_digits=10, decimal_places=2)
-    wages1 = models.DecimalField(max_digits=10, decimal_places=2)
-    wages2 = models.DecimalField(max_digits=10, decimal_places=2)
-    monthly_total = models.DecimalField(max_digits=10, decimal_places=2)
+    mfip = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    wic = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    general_assist = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    workers_comp = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    pension = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    social_security = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    ssi = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    fuel_assist = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    child_support = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    snap = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    unemployment = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    wages1 = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    wages2 = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    monthly_total = models.DecimalField(max_digits=10, decimal_places=2, default=0)
 
     insurance_assistance = models.CharField(max_length = 50,
                             choices=INSURANCE_ASSISTANCE_CHOICES)
@@ -137,7 +137,7 @@ class Person(models.Model):
 
     first_name = models.CharField(max_length=140)
     last_name = models.CharField(max_length=140)
-    birthday = models.DateTimeField()
+    birthday = models.DateTimeField(default=datetime.datetime.now(datetime.timezone.utc))
     race = models.CharField(max_length=140, choices = RACE_CHOICES)
     gender = models.CharField(max_length=140, choices = GENDER_CHOICES)
     service = models.CharField(max_length=140, choices = YES_NO_CHOICES)
@@ -162,7 +162,6 @@ class PersonForm(ModelForm):
     def __init__(self, *args, **kwargs):
         person_details = kwargs.pop('family', None)
         super().__init__(*args, **kwargs)
-        self.fields['birthday'].widget.attrs.update(size='20')
         self.age = self.instance.age()
         if person_details:
             self.fields['family'] = person_details
@@ -171,9 +170,9 @@ class PersonForm(ModelForm):
 
 class Visit(models.Model):
     family = models.ForeignKey(Family, on_delete=models.CASCADE)
-    date = models.DateTimeField()
+    date = models.DateTimeField(default = datetime.date.today())
     pounds_of_food = models.DecimalField(decimal_places=2, max_digits=10)
-    visit_notes = models.TextField()
+    visit_notes = models.TextField(default="NA")
     total_active_people = models.IntegerField(default=4)
     total_0_5 = models.IntegerField(default=0)
     total_6_17 = models.IntegerField(default=0)
@@ -192,8 +191,6 @@ class Visit(models.Model):
     city = models.CharField(max_length=140, default= "Foley")
 
 
-
-
     def __str__(self):
         return str(self.date)
 
@@ -202,7 +199,7 @@ class VisitForm(ModelForm):
     class Meta:
         model = Visit
         fields = ['family', 'date', 'pounds_of_food', 'visit_notes', 'total_active_people',
-        'total_0_5', 'total_6_17', 'total_18_24', 'total_25_44', 'total_45_64', 'total_65_plus',
+                  'total_0_5', 'total_6_17', 'total_18_24', 'total_25_44', 'total_45_64', 'total_65_plus',
                   'total_race_white', 'total_race_black', 'total_race_asian', 'total_race_hispanic',
                   'total_race_nativeAm', 'total_race_hawaiian', 'total_race_two_plus', 'total_race_other',
                   'city']
