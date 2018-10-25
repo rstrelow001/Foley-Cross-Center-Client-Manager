@@ -8,18 +8,25 @@ from .controllers import ReportController
 def run_report(request):
     # if this is a POST request we need to process the form data
     rc = ReportController()
+    month = ''
+    year = ''
     if request.method == 'GET':
-        month = request.GET.get('month', '')
-        year = request.GET.get('year', '')
-        rc.run_report(month, year)
-    return render(request, 'reports/view_report.html', {'Total Families': rc.total_families})
-                  # {'total_active_people': rc.total_active_people},
-                  # {'total_0_5': rc.total_0_5})
-                  # {'total_6_17': rc.total_6_17},
-                  # )
-                  # {'combined_total_0_17': rc.combined_total_0_17},
-                  # {'total_18_24': rc.total_18_24},
-                  # )
+        month = request.GET.get('Month', '')
+        year = request.GET.get('Year', '')
+        print("The year from views is: {}".format(year))
+        if month == "-1":
+            yearly_report_list = rc.run_yearly_report(year)
+            print("I AM HEEEERE")
+            return render(request, 'reports/view_yearly_report.html', {'yearly_report_list': yearly_report_list,
+                                                                       'year': year
+                                                                       })
+        # else, just report a single month
+        monthly_report = rc.run_monthly_report(month, year)
+    return render(request, 'reports/view_report.html', {'monthly_report': monthly_report,
+                                                        'month': month,
+                                                        'year': year
+                                                        })
+
 
 
 def new_report(request):

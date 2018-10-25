@@ -190,6 +190,11 @@ class Visit(models.Model):
     total_race_other = models.IntegerField(default=0)
     city = models.CharField(max_length=140, default= "Foley")
 
+    def get_year(self):
+        return self.date.year
+
+    def get_month(self):
+        return self.date.month
 
     def __str__(self):
         return str(self.date)
