@@ -149,7 +149,7 @@ def newVisit(request):
 
             vc = VisitController()
             visit = Visit.objects.get(family= family, date= form.cleaned_data['date'])
-            visit.total_active = vc.count_active_members(family)
+            visit.total_active_people = vc.count_active_members(family)
             visit.total_0_5 = vc.count_age_group(family, 0, 5)
             visit.total_6_17 = vc.count_age_group(family, 6, 17)
             visit.total_18_24 = vc.count_age_group(family, 18, 24)

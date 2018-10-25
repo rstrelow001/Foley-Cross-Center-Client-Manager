@@ -11,8 +11,7 @@ class Family(models.Model):
     FORESTON  = "Foreston"
     GILMAN = "Gilman"
     MILACA = "Milaca"
-    OAK = "Oak"
-    PARK = "Park"
+    OAK_PARK = "Oak Park"
     PRINCETON = "Princeton"
     RICE = "Rice"
     ROYALTON = "Royalton"
@@ -25,8 +24,7 @@ class Family(models.Model):
         (FORESTON, "Foreston"),
         (GILMAN, "Gilman"),
         (MILACA, "Milaca"),
-        (OAK,  "Oak"),
-        (PARK, "Park"),
+        (OAK_PARK, "Oak Park"),
         (PRINCETON, "Princeton"),
         (RICE, "Rice"),
         (ROYALTON, "Royalton"),
@@ -181,7 +179,7 @@ class Visit(models.Model):
     date = models.DateTimeField(default = datetime.date.today())
     pounds_of_food = models.DecimalField(decimal_places=2, max_digits=10)
     visit_notes = models.TextField(default="NA")
-    total_active_people = models.IntegerField(default=4)
+    total_active_people = models.IntegerField(default=0)
     total_0_5 = models.IntegerField(default=0)
     total_6_17 = models.IntegerField(default=0)
     total_18_24 = models.IntegerField(default=0)
