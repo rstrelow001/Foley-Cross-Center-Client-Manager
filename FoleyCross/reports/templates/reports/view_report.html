@@ -1,0 +1,266 @@
+{% extends "personal/header.html" %}
+
+{% block content %}
+	<li><a href='/'>Home</a></li>
+    <li><a href='/contact/'>Contact</a></li>
+{% endblock %}
+
+{% block moreContent %}
+    <h5>Viewing report for {{month}}/{{year}}</h5>
+    <br>
+    <style>
+    table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}</style>
+    <table>
+        <tr>
+            <td>
+
+            </td>
+            <td>
+                <h5>Monthly Totals</h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>Total Families: </h5>
+            </td>
+            <td>
+                <h5>{{monthly_report.total_families}}</h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>Total People: </h5>
+            </td>
+            <td>
+                <h5>{{monthly_report.total_active_people}}</h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>0-5: </h5>
+            </td>
+            <td>
+                <h5>{{monthly_report.total_0_5}}</h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>6-17: </h5>
+            </td>
+            <td>
+                <h5>{{monthly_report.total_6_17}}</h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>Total 0-17: </h5>
+            </td>
+            <td>
+                <h5>{{monthly_report.combined_total_0_17}}</h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>18-24: </h5>
+            </td>
+            <td>
+                <h5>{{monthly_report.total_18_24}}</h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>25-44: </h5>
+            </td>
+            <td>
+                <h5>{{monthly_report.total_25_44}}</h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>45-64: </h5>
+            </td>
+            <td>
+                <h5>{{monthly_report.total_45_64}}</h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>Total 18-64: </h5>
+            </td>
+            <td>
+                <h5>{{monthly_report.combined_total_18_64}}</h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>65+: </h5>
+            </td>
+            <td>
+                <h5>{{monthly_report.total_65_plus}}</h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>Pounds: </h5>
+            </td>
+            <td>
+                <h5>{{monthly_report.pounds_of_food}}</h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>White: </h5>
+            </td>
+            <td>
+                <h5>{{monthly_report.total_race_white}}</h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>Black: </h5>
+            </td>
+            <td>
+                <h5>{{monthly_report.total_race_black}}</h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>Asian: </h5>
+            </td>
+            <td>
+                <h5>{{monthly_report.total_race_asian}}</h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>Hispanic: </h5>
+            </td>
+            <td>
+                <h5>{{monthly_report.total_race_hispanic}}</h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>Native American: </h5>
+            </td>
+            <td>
+                <h5>{{monthly_report.total_race_nativeAm}}</h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>Hawaiian: </h5>
+            </td>
+            <td>
+                <h5>{{monthly_report.total_race_hawaiian}}</h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>Two or More: </h5>
+            </td>
+            <td>
+                <h5>{{monthly_report.total_race_two_plus}}</h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>Other: </h5>
+            </td>
+            <td>
+                <h5>{{monthly_report.total_race_other}}</h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>Foley: </h5>
+            </td>
+            <td>
+                <h5>{{monthly_report.foley}}</h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>Foreston: </h5>
+            </td>
+            <td>
+                <h5>{{monthly_report.foreston}}</h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>Gilman: </h5>
+            </td>
+            <td>
+                <h5>{{monthly_report.gilman}}</h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>Milaca: </h5>
+            </td>
+            <td>
+                <h5>{{monthly_report.milaca}}</h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>Oak Park: </h5>
+            </td>
+            <td>
+                <h5>{{monthly_report.oak_park}}</h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>Princeton: </h5>
+            </td>
+            <td>
+                <h5>{{monthly_report.princeton}}</h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>Rice: </h5>
+            </td>
+            <td>
+                <h5>{{monthly_report.rice}}</h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>Royalton: </h5>
+            </td>
+            <td>
+                <h5>{{monthly_report.royalton}}</h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>Sartell: </h5>
+            </td>
+            <td>
+                <h5>{{monthly_report.sartell}}</h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>Sauk Rapids: </h5>
+            </td>
+            <td>
+                <h5>{{monthly_report.sauk_rapids}}</h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>St Cloud: </h5>
+            </td>
+            <td>
+                <h5>{{monthly_report.st_cloud}}</h5>
+            </td>
+        </tr>
+    </table>
+{% endblock %}
