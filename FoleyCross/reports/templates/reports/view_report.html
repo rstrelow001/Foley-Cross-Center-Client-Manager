@@ -1,0 +1,31 @@
+{% extends "personal/header.html" %}
+
+{% block content %}
+	<li><a href='/'>Home</a></li>
+    <li><a href='/contact/'>Contact</a></li>
+{% endblock %}
+
+{% block moreContent %}
+    <h5>Successfully ran report!</h5>
+    <br>
+
+    <table>
+        <tr>
+            <td>
+
+            </td>
+            <td>
+                <h5>Monthly Totals</h5>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h5>Pounds: </h5>
+            </td>
+            <td>
+                <h5>{{pounds_of_food}}</h5>
+            </td>
+        </tr>
+    </table>
+
+{% endblock %}
