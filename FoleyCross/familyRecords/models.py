@@ -169,6 +169,14 @@ class PersonForm(ModelForm):
 
 
 class Visit(models.Model):
+    WHITE = "W"
+    BLACK = "B"
+    NATIVE_AMERICAN = "NA"
+    ASIAN = "A"
+    HISPANIC = "H"
+    NATIVE_HAWAIIAN = "NH"
+    TWO_PLUS = "T"
+    OTHER = "O"
     family = models.ForeignKey(Family, on_delete=models.CASCADE)
     date = models.DateTimeField(default = datetime.date.today())
     pounds_of_food = models.DecimalField(decimal_places=2, max_digits=10)
