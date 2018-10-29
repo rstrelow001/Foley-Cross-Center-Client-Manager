@@ -9,6 +9,7 @@
 {% block moreContent %}
 <form action="" method="post">
     {% csrf_token %}
+    <h3>{{error}}</h3>
     <h3>Primary Contact(First Name  Last Name):  {{ form.primary_contact_first_name }} {{form.primary_contact_last_name}} </h3>
     <h3>Date:  {{ form.date }} </h3>
     <h3>Proof of Address:  {{ form.proof_of_address }} </h3>
