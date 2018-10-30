@@ -176,7 +176,7 @@ class Visit(models.Model):
     TWO_PLUS = "T"
     OTHER = "O"
     family = models.ForeignKey(Family, on_delete=models.CASCADE)
-    date = models.DateTimeField(default = datetime.date.today())
+    date = models.DateField(default = datetime.date.today())
     pounds_of_food = models.DecimalField(decimal_places=2, max_digits=10)
     visit_notes = models.TextField(default="NA")
     total_active_people = models.IntegerField(default=0)
@@ -202,6 +202,12 @@ class Visit(models.Model):
     def get_month(self):
         return self.date.month
 
+    def not_this_month(self):
+        if datetime.date.today().month == self.date.month:
+            return 'This family has already visited this month'
+        else:
+            return ''
+
     def __str__(self):
         return str(self.date)
 
@@ -218,5 +224,6 @@ class VisitForm(ModelForm):
     def __init__(self, *args, **kwargs):
         person_details = kwargs.pop('family', None)
         super().__init__(*args, **kwargs)
+        self.visited = self.instance.not_this_month()
         if person_details:
             self.fields['family'] = person_details
