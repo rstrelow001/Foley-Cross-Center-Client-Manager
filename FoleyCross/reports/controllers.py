@@ -7,55 +7,61 @@ import datetime
 
 
 class ReportController:
-    '''
-    def __init__(self, month=0, year=0, total_families=0, total_active_people=0, total_0_5=0, total_6_17=0,
-                 combined_total_0_17=0, total_18_24=0, total_25_44=0, total_45_64=0, combined_total_18_64=0,
-                 total_65_plus=0, pounds_of_food=0, total_race_white=0, total_race_black=0, total_race_asian=0,
-                 total_race_hispanic=0, total_race_nativeAm=0, total_race_hawaiian=0, total_race_two_plus=0,
-                 total_race_other=0, foley=0, foreston=0, gilman=0, milaca=0, oak_park=0, princeton=0,
-                 rice=0, royalton=0, sartell=0, sauk_rapids=0, st_cloud=0):
-        self.month = month
-        self.year = year
-        self.total_families = total_families
-        self.total_active_people = total_active_people
-        self.total_0_5 = total_0_5
-        self.total_6_17 = total_6_17
-        self.combined_total_0_17 = combined_total_0_17
-        self.total_18_24 = total_18_24
-        self.total_25_44 = total_25_44
-        self.total_45_64 = total_45_64
-        self.combined_total_18_64 = combined_total_18_64
-        self.total_65_plus = total_65_plus
-        self.pounds_of_food = pounds_of_food
-        self.total_race_white = total_race_white
-        self.total_race_black = total_race_black
-        self.total_race_asian = total_race_asian
-        self.total_race_hispanic = total_race_hispanic
-        self.total_race_nativeAm = total_race_nativeAm
-        self.total_race_hawaiian = total_race_hawaiian
-        self.total_race_two_plus = total_race_two_plus
-        self.total_race_other = total_race_other
-        self.foley = foley
-        self.foreston = foreston
-        self.gilman = gilman
-        self.milaca = milaca
-        self.oak_park = oak_park
-        self.princeton = princeton
-        self.rice = rice
-        self.royalton = royalton
-        self.sartell = sartell
-        self.sauk_rapids = sauk_rapids
-        self.st_cloud = st_cloud
-        '''
+    field_list = ['total_active_people', 'total_0_5', 'total_6_17', 'total_18_24', 'total_25_44', 'total_45_64',
+                  'total_65_plus', 'pounds_of_food', 'total_race_white', 'total_race_black', 'total_race_asian', 'total_race_hispanic',
+                  'total_race_nativeAm', 'total_race_hawaiian', 'total_race_two_plus', 'total_race_other'
+                  ]
+
+    city_list = ['foley', 'foreston', 'gilman', 'milaca', 'oak_park', 'princeton', 'rice', 'royalton', 'sartell', 'sauk_rapids', 'st_cloud']
 
     def run_monthly_report(self, report_month, report_year):
+        visits = Visit.objects.all()
+        report = Report()
+        for visit in visits:
+            if (int(visit.get_month()) == int(report_month)) and (int(visit.get_year()) == int(report_year)):
+                report.total_families += 1
+                for f in self.field_list:
+                    attribute = getattr(visit, f)
+                    if attribute is not None:
+                        report.set_attribute(f, attribute)
+                report.combined_total_0_17 += (report.total_0_5 + report.total_6_17)
+                report.combined_total_18_64 += (report.total_18_24 + report.total_25_44 + report.total_45_64)
+
+                # print("Untouched city taken from visit: {}".format(visit.city))
+                city = str(visit.city).lower()
+                # print("CITY BEFORE REPLACE: {}".format(city))
+                city = city.replace(' ', '_')
+                # print("CITY AFTER REPLACE: {}".format(city))
+                if city in self.city_list:
+                    report.set_attribute(city, 1)
+        return report
+
+    def run_yearly_report(self, report_year):
+        full_report = Report()
+        report_list = []
+        for m in range(1, 13):
+            report = self.run_monthly_report(m, report_year)
+            report_list.append(report)
+            full_report.set_attribute('total_families', full_report.total_families + report.total_families)
+            for f in self.field_list:
+                attribute = getattr(report, f)
+                full_report.set_attribute(f, attribute)
+            for c in self.city_list:
+                city = getattr(report, c)
+                full_report.set_attribute(c, city)
+            full_report.set_attribute('combined_total_0_17', report.combined_total_0_17)
+            full_report.set_attribute('combined_total_18_64', report.combined_total_18_64)
+        report_list.append(full_report)
+        return report_list
+
+'''
+    def original_run_monthly_report(self, report_month, report_year):
         visits = Visit.objects.all()
         report = Report()
         for visit in visits:
             # get month and year from datetime object
             month = int(visit.get_month())
             year = int(visit.get_year())
-            print("controller:Month: {}  Year: {}".format(month, year))
             if (month == int(report_month)) and (year == int(report_year)):
                 report.total_families += 1
                 if visit.total_active_people is not None:
@@ -132,7 +138,7 @@ class ReportController:
                     report.st_cloud += visit.st_cloud
         return report
 
-    def run_yearly_report(self, report_year):
+    def _original_run_yearly_report(self, report_year):
         visits = Visit.objects.all()
         full_report = Report()
         report_list = []
@@ -249,3 +255,4 @@ class ReportController:
             report_list.append(report)
         report_list.append(full_report)
         return report_list
+'''

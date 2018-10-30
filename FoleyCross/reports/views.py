@@ -16,7 +16,6 @@ def run_report(request):
         print("The year from views is: {}".format(year))
         if month == "-1":
             yearly_report_list = rc.run_yearly_report(year)
-            print("I AM HEEEERE")
             return render(request, 'reports/view_yearly_report.html', {'yearly_report_list': yearly_report_list,
                                                                        'year': year
                                                                        })
@@ -26,7 +25,6 @@ def run_report(request):
                                                         'month': month,
                                                         'year': year
                                                         })
-
 
 
 def new_report(request):
