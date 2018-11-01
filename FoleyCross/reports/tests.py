@@ -1,3 +1,10 @@
 from django.test import TestCase
+from familyRecords.models import Person, Family
+from familyRecords.controllers import SearchController, VisitController
+from .forms import Report
+from .controllers import ReportController
 
-# Create your tests here.
+#
+# class ReportTestCase(TestCase):
+#     def setUp(self):
+#         Family.objects.create()

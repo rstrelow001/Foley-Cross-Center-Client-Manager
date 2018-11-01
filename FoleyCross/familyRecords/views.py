@@ -66,6 +66,7 @@ def updatePerson(request):
 
 def newFamily(request):
     # if this is a POST request we need to process the form data
+    error = ""
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = FamilyForm(request.POST)
@@ -74,23 +75,27 @@ def newFamily(request):
             # process the data in form.cleaned_data as required
             # ...
             # redirect to a new URL:
-            newForm = form.save(commit=False)
-            newForm.save()
+            temp_fam = Family.objects.filter(primary_contact_first_name = form.cleaned_data['primary_contact_first_name'], primary_contact_last_name = form.cleaned_data['primary_contact_last_name'])
+            if (temp_fam.exists()):
+                error = "There is already a primary contact with this name"
+            else:
+                newForm = form.save(commit=False)
+                newForm.save()
 
 
-            fam_updated = Family.objects.get(primary_contact_first_name = form.cleaned_data['primary_contact_first_name'], primary_contact_last_name = form.cleaned_data['primary_contact_last_name'])
-            fc = FamilyController()
-            fam_updated.monthly_total = fc.count_monthly_total(fam_updated)
-            form = FamilyForm(instance=fam_updated)
-            newForm = form.save(commit=False)
-            newForm.save()
-            return HttpResponseRedirect('..')
+                fam_updated = Family.objects.get(primary_contact_first_name = form.cleaned_data['primary_contact_first_name'], primary_contact_last_name = form.cleaned_data['primary_contact_last_name'])
+                fc = FamilyController()
+                fam_updated.monthly_total = fc.count_monthly_total(fam_updated)
+                form = FamilyForm(instance=fam_updated)
+                newForm = form.save(commit=False)
+                newForm.save()
+                return HttpResponseRedirect('..')
 
     # if a GET (or any other method) we'll create a blank form
     else:
         form = FamilyForm()
 
-    return render(request, 'familyRecords/familyForm.html', {'form': form})
+    return render(request, 'familyRecords/familyForm.html', {'form': form, 'error': error})
 
 
 

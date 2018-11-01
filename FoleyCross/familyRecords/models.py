@@ -176,7 +176,7 @@ class Visit(models.Model):
     TWO_PLUS = "T"
     OTHER = "O"
     family = models.ForeignKey(Family, on_delete=models.CASCADE)
-    date = models.DateField(default = datetime.date.today())
+    date = models.DateTimeField(default = datetime.date.today())
     pounds_of_food = models.DecimalField(decimal_places=2, max_digits=10)
     visit_notes = models.TextField(default="NA")
     total_active_people = models.IntegerField(default=0)
