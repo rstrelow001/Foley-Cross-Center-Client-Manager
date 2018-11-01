@@ -24,16 +24,15 @@ class ReportController:
                     attribute = getattr(visit, f)
                     if attribute is not None:
                         report.set_attribute(f, attribute)
-                report.combined_total_0_17 += (report.total_0_5 + report.total_6_17)
-                report.combined_total_18_64 += (report.total_18_24 + report.total_25_44 + report.total_45_64)
 
-                # print("Untouched city taken from visit: {}".format(visit.city))
                 city = str(visit.city).lower()
-                # print("CITY BEFORE REPLACE: {}".format(city))
                 city = city.replace(' ', '_')
-                # print("CITY AFTER REPLACE: {}".format(city))
                 if city in self.city_list:
                     report.set_attribute(city, 1)
+
+        report.set_attribute('combined_total_0_17', (report.total_0_5 + report.total_6_17))
+        report.set_attribute('combined_total_18_64', (report.total_18_24 + report.total_25_44 + report.total_45_64))
+        print(" HELLLLOOOO {}".format(report.combined_total_18_64))
         return report
 
     def run_yearly_report(self, report_year):
@@ -42,7 +41,7 @@ class ReportController:
         for m in range(1, 13):
             report = self.run_monthly_report(m, report_year)
             report_list.append(report)
-            full_report.set_attribute('total_families', full_report.total_families + report.total_families)
+            full_report.set_attribute('total_families', report.total_families)
             for f in self.field_list:
                 attribute = getattr(report, f)
                 full_report.set_attribute(f, attribute)
