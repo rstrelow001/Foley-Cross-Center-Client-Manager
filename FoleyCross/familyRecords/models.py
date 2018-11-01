@@ -202,12 +202,6 @@ class Visit(models.Model):
     def get_month(self):
         return self.date.month
 
-    def not_this_month(self):
-        if datetime.date.today().month == self.date.month:
-            return 'This family has already visited this month'
-        else:
-            return ''
-
     def __str__(self):
         return str(self.date)
 

@@ -1,6 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django import forms
+import datetime
 
 from .models import PersonForm, FamilyForm, Person, Family, VisitForm, Visit
 from .controllers import SearchController, VisitController,FamilyController
@@ -123,6 +124,11 @@ def updateFamily(request):
         familyForm = FamilyForm(instance=family)
         members= family.person_set.all()
         visits = family.visit_set.all()
+
+        for visit in visits:
+                if datetime.date.today().month == visit.get_month():
+                    error = 'This family has already visited this month'
+
         forms = []
         for person in members:
             newPerson = PersonForm(instance=person)
