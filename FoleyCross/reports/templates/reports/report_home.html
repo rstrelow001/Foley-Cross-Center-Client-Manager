@@ -28,7 +28,7 @@
     </select>
     <br><br>
     <h6>Year</h6>
-    <h6><input name="Year" placeholder="XXXX" required></h6>
+    <h6><input name="Year" placeholder="XXXX" type="text" maxlength="4" oninput="this.value=this.value.replace(/[^0-9]/g,'');" required></h6>
     <br>
 
     <script>
@@ -37,7 +37,6 @@
           var numbers = /^[0-9]+$/;
 
           if((y.value.match(numbers)) && (y.length!= 4)){
-              alert('Year is valid....');
               document.form1.text1.focus();
               return true;
           }

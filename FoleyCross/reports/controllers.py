@@ -32,7 +32,6 @@ class ReportController:
 
         report.set_attribute('combined_total_0_17', (report.total_0_5 + report.total_6_17))
         report.set_attribute('combined_total_18_64', (report.total_18_24 + report.total_25_44 + report.total_45_64))
-        print(" HELLLLOOOO {}".format(report.combined_total_18_64))
         return report
 
     def run_yearly_report(self, report_year):
