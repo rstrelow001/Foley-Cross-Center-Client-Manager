@@ -38,3 +38,8 @@ class Report:
         self.sartell = sartell
         self.sauk_rapids = sauk_rapids
         self.st_cloud = st_cloud
+
+    def set_attribute(self, attribute_name, attribute_val):
+        previous_val = getattr(self, attribute_name)
+        to_add = previous_val + attribute_val
+        setattr(self, attribute_name, to_add)

@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block moreContent %}
-<form action="/reports/run_report" method="get">
+<form name="form1" action="/reports/run_report" method="get">
     {% csrf_token %}
     <h5>Please choose a Month and Year to run a report</h5>
     <br>
@@ -28,6 +28,7 @@
     </select>
     <br>
     <h6>Year</h6>
+
     <h6><input name="Year" placeholder="XXXX"></h6>
 
     <h6>Generate PDF ?</h6>
@@ -37,6 +38,28 @@
     </select>
     <br><br>
     <input type="submit" value="Run Report">
+    <h6><input name="Year" placeholder="XXXX" type="text" maxlength="4" oninput="this.value=this.value.replace(/[^0-9]/g,'');" required></h6>
+    <br>
+
+    <script>
+    function all_numeric(y)
+       {
+          var numbers = /^[0-9]+$/;
+
+          if((y.value.match(numbers)) && (y.length!= 4)){
+              document.form1.text1.focus();
+              return true;
+          }
+
+          else{
+              alert('Please input a valid year in format "XXXX"');
+              document.form1.text1.focus();
+              return false;
+          }
+       }
+    </script>
+
+    <input type="submit" value="Run Report" onclick="all_numeric(document.form1.Year)">
 </form>
 
 {% endblock %}
