@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    {% load staticfiles %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Cross Center Client Manager</title>
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700">
+    <link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.min.css' %">
+</head>
+
+<body id="page-top">
+    <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark" id="mainNav">
+        <div><img src="{% static 'assets/img/crossLogo.jpg' %}" alt="Cross" style="width:275px;height:100px;"></div>
+        <div class="container"><a class="navbar-brand" style="font-family: Montserrat, sans-serif;">Cross Center Client Manager</a><button class="navbar-toggler navbar-toggler-right" data-toggle="collapse" data-target="#navbarResponsive" type="button" data-toogle="collapse"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="nav navbar-nav ml-auto text-uppercase">
+                    <li class="nav-item" role="presentation"><a class="nav-link invisible js-scroll-trigger">Log Out</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="masthead" style="background-image:url('header-bg.jpg');">
+        <div class="container"></div>
+    </header>
+
+    <body class="body" style="background-color:rgb(185, 181, 185)">
+        <div class="container-fluid" style="min-height:95%; ">
+            <div class="row">
+                  <div class="col-sm-2">
+                      <br>
+                      <center>
+    
+                      </center>
+                  </div>
+                  <div class="col-sm-10">
+                      <br>
+                      <center>
+                      <h3>Foley Cross Center</h3>
+                      </center>
+                  </div>
+            </div><hr>
+    
+            <div class="row">
+              <div class="col-sm-2">
+              <br>
+    
+              <br>
+               <!-- Great, til you resize. -->
+                <!--<div class="well bs-sidebar affix" id="sidebar" style="background-color:#fff">-->
+                <div class="well bs-sidebar" id="sidebar" ">
+                  <ul>
+                      {% block content %}
+                      {% endblock %}
+                  </ul>
+                </div> <!--well bs-sidebar affix-->
+              </div> <!--col-sm-2-->
+              <div class="col-sm-10">
+    
+                <div class='container-fluid'>
+                <br><br>
+                   {% block moreContent %}
+                   {% endblock %}
+                </div>
+              </div>
+            </div>
+        </div>
+        
+    
+    </body>
+
+    <script src="{% static 'assets/js/jquery.min.js' %"></script>
+    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="{% static 'assets/js/script.min.js"' %></script>
+</body>
+
+</html>
