@@ -75,18 +75,54 @@ class ReportController:
 
     def run_yearly_report(self, report_year):
         full_report = Report()
+        full_new_this_month = Report()
+        full_new_to_cross = Report()
+
         report_list = []
+        new_this_month_list = []
+        new_to_cross_list = []
         for m in range(1, 13):
-            report = self.run_monthly_report(m, report_year)
+            report_tuple = self.run_monthly_report(m, report_year)
+            report = report_tuple[0]
+            report_new_this_month = report_tuple[1]
+            report_new_to_cross = report_tuple[2]
+
             report_list.append(report)
+            new_this_month_list.append(report_new_this_month)
+            new_to_cross_list.append(report_new_to_cross)
+
             full_report.set_attribute('total_families', report.total_families)
+            full_new_this_month.set_attribute('total_families', report_new_this_month.total_families)
+            full_new_to_cross.set_attribute('total_families', report_new_to_cross.total_families)
             for f in self.field_list:
                 attribute = getattr(report, f)
                 full_report.set_attribute(f, attribute)
+
+                attribute = getattr(report_new_this_month, f)
+                full_new_this_month.set_attribute(f, attribute)
+
+                attribute = getattr(report_new_to_cross, f)
+                full_new_to_cross.set_attribute(f, attribute)
             for c in self.city_list:
                 city = getattr(report, c)
                 full_report.set_attribute(c, city)
+
+                city = getattr(report_new_this_month, c)
+                full_new_this_month.set_attribute(c, city)
+
+                city = getattr(report_new_to_cross, c)
+                full_new_to_cross.set_attribute(c, city)
+
             full_report.set_attribute('combined_total_0_17', report.combined_total_0_17)
             full_report.set_attribute('combined_total_18_64', report.combined_total_18_64)
+
+            full_new_this_month.set_attribute('combined_total_0_17', report_new_this_month.combined_total_0_17)
+            full_new_this_month.set_attribute('combined_total_18_64', report_new_this_month.combined_total_18_64)
+
+            full_new_to_cross.set_attribute('combined_total_0_17', report_new_to_cross.combined_total_0_17)
+            full_new_to_cross.set_attribute('combined_total_18_64', report_new_to_cross.combined_total_18_64)
+
         report_list.append(full_report)
-        return report_list
+        new_this_month_list.append(full_new_this_month)
+        new_to_cross_list.append(full_new_to_cross)
+        return report_list, new_this_month_list, new_to_cross_list
