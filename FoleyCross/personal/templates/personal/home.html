@@ -1,14 +1,24 @@
-{% extends "personal/header.html" %}
-
+{% extends "personal/basicHeader.html" %}
+{% load staticfiles %}
 {% block content %}
-	<li><a href='/'>Home</a></li>
-    <li><a href='/contact/'>Contact</a></li>
-    <li><a href='/familyRecords/'>Family Records</a></li>
-    <li><a href='/reports/'>Reports</a></li>
+	
 {% endblock %}
 
 {% block moreContent %}
-<p>Hey, welcome to the Foley Cross Center Client Manager!</p>
 
-{% include "personal/includes/htmlsnippet.html" %}
+
+<section id="services">
+        <div class="container">
+            <div class="row">
+    
+    <div class="col"><a href='/familyRecords/'> <img border="0" alt="famRec" src="{% static 'assets/img/clientRecords.png' %}" width="150" height="150"></a></div>
+                <div class="col"> <a href='/reports/'><img border="0" alt="famRec" src="{% static 'assets/img/clientReports.png' %}" width="150" height="150"></a></div>
+                <div class="col"><a href='/contact/' ><img border="0" alt="famRec" src="{% static 'assets/img/contact.png' %}" width="150" height="150"></a></div>
+            </div>
+        </div>
+    </section>
+    <!--<li><a href='/'>Home</a></li>
+    <li><a href='/contact/' >Contact</a></li>-->
+
+
 {% endblock %}
