@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block moreContent %}
-<form name="form1" action="/reports/run_report" method="get">
+<form name="form1" action="/reports/run_report" method="get" target = "_blank">
     {% csrf_token %}
     <h5>Please choose a Month and Year to run a report</h5>
     <br>
@@ -36,9 +36,14 @@
     function all_numeric(y)
        {
           var numbers = /^[0-9]+$/;
-
+          
           if((y.value.match(numbers)) && (y.length!= 4)){
               document.form1.text1.focus();
+              
+              if(d == 1){
+                alert('Please input a valid year in format "XXXX"');
+                
+              }
               return true;
           }
 
@@ -56,6 +61,7 @@
         </select>
         <br><br>
     <input type="submit" value="Run Report" onclick="all_numeric(document.form1.Year)">
+    
 </form>
 
 {% endblock %}

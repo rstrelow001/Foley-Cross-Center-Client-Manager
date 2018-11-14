@@ -30,6 +30,7 @@ def run_report(request):
                     'yearly_report_list': yearly_report_list_tuple,
                     'year': year
                 }
+                
                 return Render.render('reports/generate_year.html', params)
 
             return render(request, 'reports/view_yearly_report.html', {'yearly_report': yearly_report,
