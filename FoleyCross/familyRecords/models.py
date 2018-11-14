@@ -218,6 +218,6 @@ class VisitForm(ModelForm):
     def __init__(self, *args, **kwargs):
         person_details = kwargs.pop('family', None)
         super().__init__(*args, **kwargs)
-        #self.visited = self.instance.not_this_month()
+        # self.visited = self.instance.not_this_month()
         if person_details:
             self.fields['family'] = person_details

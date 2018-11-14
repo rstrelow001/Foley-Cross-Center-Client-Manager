@@ -13,7 +13,7 @@
     <h3>ID:  {{ family.id }} </h3>
     <h3>Members:  <a href='/familyRecords/newPerson/?familyid={{family.id}}'> Add a Member</a></h3>
         {%for person in members %}
-    <h5>{{person}}  <a href='/familyRecords/updatePerson/?personid={{person.id}}&familyid={{person.family.id}}'>Edit</a></h5>
+    <h5>{{person}} Age: {{person.age}}  Status: {{person.status}}  <a href='/familyRecords/updatePerson/?personid={{person.id}}&familyid={{person.family.id}}'>Edit</a></h5>
     {% endfor %}
     <h3>Visits:  <a href='/familyRecords/newVisit/?familyid={{family.id}}'> Add a Visit</a></h3>
         {%for visit in visits %}
