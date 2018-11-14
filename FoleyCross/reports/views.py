@@ -12,6 +12,9 @@ def run_report(request):
     month = ''
     year = ''
     makepdf = ''
+    full_month = ''
+    new_this_month = ''
+    new_to_cross = ''
     if request.method == 'GET':
         month = request.GET.get('Month', '')
         year = request.GET.get('Year', '')
@@ -33,13 +36,18 @@ def run_report(request):
                                                                        })
         # else, just report a single month
         monthly_report = rc.run_monthly_report(month, year)
+        full_month = monthly_report[0]
+        new_this_month = monthly_report[1]
+        new_to_cross = monthly_report[2]
         if makepdf == "1" :
             params = {'monthly_report': monthly_report,
                                                         'month': month,
                                                         'year': year
                                                         }
             return Render.render('reports/generate_month.html', params)
-    return render(request, 'reports/view_report.html', {'monthly_report': monthly_report,
+    return render(request, 'reports/view_report.html', {'monthly_report': full_month,
+                                                        'new_this_month': new_this_month,
+                                                        'new_to_cross': new_to_cross,
                                                         'month': month,
                                                         'year': year
                                                         })
