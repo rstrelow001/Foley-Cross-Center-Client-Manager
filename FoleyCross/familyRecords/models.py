@@ -84,7 +84,7 @@ class Family(models.Model):
     insurance_assistance = models.CharField(max_length = 50,
                             choices=INSURANCE_ASSISTANCE_CHOICES)
 
-    status = models.CharField(max_length = 50, choices=ACTIVE_NONACTIVE_CHOICES)
+    status = models.CharField(max_length = 50, choices=ACTIVE_NONACTIVE_CHOICES, default="Non-Active")
 
     def __str__(self):
         return self.primary_contact_last_name + ", " + self.primary_contact_first_name
