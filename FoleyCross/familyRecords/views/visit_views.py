@@ -4,7 +4,7 @@ from django import forms
 import datetime
 
 from ..models import PersonForm, FamilyForm, Person, Family, VisitForm, Visit
-from ..controllers import SearchController, VisitController,FamilyController
+from ..controllers import VisitController,FamilyController
 
 
 def newVisit(request):
