@@ -47,6 +47,13 @@ class Family(models.Model):
         (ASSISTANCE, "Assistance")
     )
 
+    ACTIVE = "Active"
+    NON_ACTIVE = "Non-Active"
+    ACTIVE_NONACTIVE_CHOICES = (
+        (ACTIVE, "Active"),
+        (NON_ACTIVE, "Non-Active")
+    )
+
     primary_contact_first_name = models.CharField(max_length=140)
     primary_contact_last_name = models.CharField(max_length=140)
     proof_of_address = models.CharField(max_length = 10,
@@ -77,6 +84,8 @@ class Family(models.Model):
     insurance_assistance = models.CharField(max_length = 50,
                             choices=INSURANCE_ASSISTANCE_CHOICES)
 
+    status = models.CharField(max_length = 50, choices=ACTIVE_NONACTIVE_CHOICES)
+
     def __str__(self):
         return self.primary_contact_last_name + ", " + self.primary_contact_first_name
 
@@ -88,7 +97,7 @@ class FamilyForm(ModelForm):
                   'date', 'city', 'zip', 'phone', 'mfip', 'wic',
                   'general_assist', 'workers_comp', 'pension', 'social_security',
                   'ssi', 'fuel_assist', 'child_support', 'snap', 'unemployment',
-                  'wages1', 'wages2', 'monthly_total', 'insurance_assistance']
+                  'wages1', 'wages2', 'monthly_total', 'insurance_assistance', 'status']
 
 
 
