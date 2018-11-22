@@ -18,7 +18,7 @@
 
 
     {% for family in object_list %}
-        <h5><a href="/familyRecords/updateFamily/?id={{family.id}}">{{family.primary_contact_last_name}}, {{family.primary_contact_first_name}} ID: {{family.id}}</a> </h5>
+        <h5><a href="/familyRecords/updateFamily/?id={{family.id}}">{{family.primary_contact_last_name}}, {{family.primary_contact_first_name}} ID: {{family.id}}  Status: {{family.status}}</a> </h5>
     {% endfor %}
 
     <form action="/familyRecords/newFamily" method="get">

@@ -40,7 +40,6 @@ def newFamily(request):
     return render(request, 'familyRecords/familyForm.html', {'form': form, 'error': error})
 
 
-
 def updateFamily(request):
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
@@ -54,8 +53,18 @@ def updateFamily(request):
             family_id = request.GET.get('id', '')
             family = Family.objects.get(pk=family_id)
             form = FamilyForm(request.POST, instance=family)
+            visit_list = family.visit_set.all()
+            visits_this_year_list = []
+            for v in visit_list:
+                if v.get_year() == datetime.date.today().year:
+                    visits_this_year_list.append(v)
+            if len(visits_this_year_list) > 1:
+                family.status = family.ACTIVE
+                family.save(['status'])
+            else:
+                family.status = family.NON_ACTIVE
+                family.save(['status'])
             form.save()
-
             fam_updated = Family.objects.get(pk=family_id)
             fc = FamilyController()
             fam_updated.monthly_total = fc.count_monthly_total(fam_updated)
@@ -71,18 +80,25 @@ def updateFamily(request):
         familyForm = FamilyForm(instance=family)
         members= family.person_set.all()
         visits = family.visit_set.all()
-
+        visits_this_year_list = []
         for visit in visits:
                 if datetime.date.today().month == visit.get_month():
                     error = 'This family has already visited this month'
+                if int(visit.get_year()) == int(datetime.date.today().year):
+                        visits_this_year_list.append(visit)
+        if len(visits_this_year_list) > 1:
+            family.status = family.ACTIVE
+            family.save(['status'])
+        else:
+            family.status = family.NON_ACTIVE
+            family.save(['status'])
 
         forms = []
         for person in members:
             newPerson = PersonForm(instance=person)
             forms.append(newPerson)
 
-    return render(request, 'familyRecords/updateFamily.html', {'form': familyForm, 'family': family, 'members': members, 'visits': visits})
-
+    return render(request, 'familyRecords/updateFamily.html', {'form': familyForm, 'family': family, 'members': members, 'visits': visits, 'status': family.status})
 
 def searchFamily(request):
     # if this is a POST request we need to process the form data
