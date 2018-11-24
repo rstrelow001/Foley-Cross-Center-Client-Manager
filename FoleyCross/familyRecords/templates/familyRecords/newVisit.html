@@ -12,7 +12,7 @@
     <h3></h3>
     <h3>Family:  {{ form.family }} </h3>
     <h3>{{error}}</h3>
-    <h3>Date:  {{ form.date }} </h3>
+    <h3> Date: <input type ="date" size="30" class="form-control" value={{ form.date }} ></h3>
     <h3>Pounds: {{form.pounds_of_food }} </h3>
     <h3>Notes:  {{ form.visit_notes }} </h3>
     {{ form.total_active_people.as_hidden }}
