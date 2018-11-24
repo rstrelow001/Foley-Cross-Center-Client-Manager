@@ -7,19 +7,12 @@
 
 {% block moreContent %}
     <form action="/familyRecords/search" method="get">
+        <h5></h5>
         {% csrf_token %}
-        <h5>First Name: <input type="text" value="" name = "first_name"></h5>
-        <h5>Last Name: <input type="text" value="" name = "last_name"></h5>
-        <h5>Family ID: <input type="number" name = "family_id"></h5>
         <input type="submit" value="Search">
+
         <h5></h5>
     </form>
-
-
-
-    {% for family in object_list %}
-        <h5><a href="/familyRecords/updateFamily/?id={{family.id}}">{{family.primary_contact_last_name}}, {{family.primary_contact_first_name}} ID: {{family.id}}</a> </h5>
-    {% endfor %}
 
     <form action="/familyRecords/newFamily" method="get">
         {% csrf_token %}
@@ -28,4 +21,58 @@
         <h5></h5>
     </form>
 
+        List By: <select name = "list_option" id= "list_option" onchange="myFunction()">
+            <option value="all">All</option>
+            <option value="active">Active</option>
+            <option value="non_active">Non-Active</option>
+
+        </select> <h5></h5>
+    {% for family in object_list %}
+        <h5 onclick="myFunction(this)" id="family_{{forloop.counter0}}"> <a href="/familyRecords/updateFamily/?id={{family.id}}">{{family.primary_contact_last_name}}, {{family.primary_contact_first_name}} ID: {{family.id}}</a>
+        <input value = "{{family.status}}" id = "family_{{forloop.counter0}}_status" hidden="true"></h5>
+        {% if forloop.counter0 == forloop.counter0|add:forloop.revcounter0 %}
+            <input value = "{{forloop.counter0|add:forloop.revcounter}}" id = "size" hidden = "true" >
+        {% endif %}
+    {% endfor %}
+
+
+
+<script>
+function myFunction() {
+    var i;
+    var status_toggle = document.getElementById("list_option").value;
+
+
+        for (i = 0; i < document.getElementById("size").value; i++) {
+            var family_status = document.getElementById("family_"+ i + "_status").value;
+
+            if (status_toggle == "active") {
+                if (family_status == "Active") {
+                    var x = document.getElementById("family_"+ i);
+                    x.style.display = "block";
+                }
+                else {
+                    var x = document.getElementById("family_"+ i);
+                    x.style.display = "none";
+                }
+            }
+            else if (status_toggle == "non_active") {
+                if (family_status == "Active") {
+                    var x = document.getElementById("family_"+ i);
+                    x.style.display = "none";
+                }
+                else {
+                    var x = document.getElementById("family_"+ i);
+                    x.style.display = "block";
+                }
+            }
+            else {
+                var x = document.getElementById("family_"+ i);
+                x.style.display = "block";
+            }
+        }
+
+}
+</script>
 {% endblock %}
+

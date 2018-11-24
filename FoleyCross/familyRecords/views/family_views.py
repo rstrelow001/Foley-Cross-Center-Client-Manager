@@ -104,5 +104,8 @@ def searchFamily(request):
         matches = Family.objects.all().order_by("primary_contact_last_name", "primary_contact_first_name")
 
 
-    return render(request, 'familyRecords/families.html', {'object_list': matches})
+    return render(request, 'familyRecords/familySearch.html', {'object_list': matches})
+
+def searchPage(request):
+    return render(request, 'familyRecords/familySearch.html')
 
