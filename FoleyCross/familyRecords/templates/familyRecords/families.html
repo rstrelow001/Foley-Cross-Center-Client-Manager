@@ -28,7 +28,7 @@
 
         </select> <h5></h5>
     {% for family in object_list %}
-        <h5 onclick="myFunction(this)" id="family_{{forloop.counter0}}"> <a href="/familyRecords/updateFamily/?id={{family.id}}">{{family.primary_contact_last_name}}, {{family.primary_contact_first_name}} ID: {{family.id}}</a>
+        <h5 onclick="myFunction(this)" id="family_{{forloop.counter0}}"> <a href="/familyRecords/updateFamily/?id={{family.id}}">{{family.primary_contact_last_name}}, {{family.primary_contact_first_name}} ID: {{family.id}} Status: {{family.status}}</a>
         <input value = "{{family.status}}" id = "family_{{forloop.counter0}}_status" hidden="true"></h5>
         {% if forloop.counter0 == forloop.counter0|add:forloop.revcounter0 %}
             <input value = "{{forloop.counter0|add:forloop.revcounter}}" id = "size" hidden = "true" >
