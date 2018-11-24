@@ -85,6 +85,7 @@ class Family(models.Model):
                             choices=INSURANCE_ASSISTANCE_CHOICES)
 
     status = models.CharField(max_length = 50, choices=ACTIVE_NONACTIVE_CHOICES, default="Non-Active")
+    volunteer = models.CharField(max_length = 100, default="")
 
     def __str__(self):
         return self.primary_contact_last_name + ", " + self.primary_contact_first_name
@@ -97,7 +98,7 @@ class FamilyForm(ModelForm):
                   'date', 'city', 'zip', 'phone', 'mfip', 'wic',
                   'general_assist', 'workers_comp', 'pension', 'social_security',
                   'ssi', 'fuel_assist', 'child_support', 'snap', 'unemployment',
-                  'wages1', 'wages2', 'monthly_total', 'insurance_assistance', 'status']
+                  'wages1', 'wages2', 'monthly_total', 'insurance_assistance', 'status', 'volunteer']
 
 
 
@@ -150,7 +151,7 @@ class Person(models.Model):
     service = models.CharField(max_length=140, choices = YES_NO_CHOICES)
     status = models.CharField(max_length=140, choices = ACTIVE_NONACTIVE_CHOICES)
     family = models.ForeignKey(Family, on_delete=models.CASCADE)
-
+    volunteer = models.CharField(max_length=100, default="")
 
     def __str__(self):
         return self.first_name + " " + self.last_name
@@ -163,7 +164,7 @@ class PersonForm(ModelForm):
     class Meta:
         model = Person
         fields = ['first_name', 'last_name', 'birthday', 'race',
-                  'gender', 'service', 'status', 'family']
+                  'gender', 'service', 'status', 'family', 'volunteer']
         age = forms.IntegerField()
 
     def __init__(self, *args, **kwargs):
@@ -204,6 +205,7 @@ class Visit(models.Model):
     total_race_two_plus = models.IntegerField(default=0)
     total_race_other = models.IntegerField(default=0)
     city = models.CharField(max_length=140, default= "Foley")
+    volunteer = models.CharField(max_length=100, default="")
 
     def get_year(self):
         return self.date.year
@@ -222,7 +224,7 @@ class VisitForm(ModelForm):
                   'total_0_5', 'total_6_17', 'total_18_24', 'total_25_44', 'total_45_64', 'total_65_plus',
                   'total_race_white', 'total_race_black', 'total_race_asian', 'total_race_hispanic',
                   'total_race_nativeAm', 'total_race_hawaiian', 'total_race_two_plus', 'total_race_other',
-                  'city']
+                  'city', 'volunteer']
 
     def __init__(self, *args, **kwargs):
         person_details = kwargs.pop('family', None)
