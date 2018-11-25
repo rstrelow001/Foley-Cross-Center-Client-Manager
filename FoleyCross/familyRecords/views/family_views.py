@@ -53,21 +53,19 @@ def updateFamily(request):
             family_id = request.GET.get('id', '')
             family = Family.objects.get(pk=family_id)
             form = FamilyForm(request.POST, instance=family)
-            visit_list = family.visit_set.all()
-            visits_this_year_list = []
-            for v in visit_list:
-                if v.get_year() == datetime.date.today().year:
-                    visits_this_year_list.append(v)
-            if len(visits_this_year_list) > 1:
-                family.status = family.ACTIVE
-                family.save(['status'])
-            else:
-                family.status = family.NON_ACTIVE
-                family.save(['status'])
             form.save()
             fam_updated = Family.objects.get(pk=family_id)
             fc = FamilyController()
             fam_updated.monthly_total = fc.count_monthly_total(fam_updated)
+            visits = fam_updated.visit_set.all()
+            visited = False
+            for visit in visits:
+                if int(visit.get_year()) == int(datetime.datetime.today().year):
+                    visited = True
+            if visited:
+                fc.has_visited(fam_updated)
+            else:
+                fc.has_not_visited(fam_updated)
             form = FamilyForm(instance=fam_updated)
             newForm = form.save(commit=False)
             newForm.save()
@@ -80,19 +78,9 @@ def updateFamily(request):
         familyForm = FamilyForm(instance=family)
         members= family.person_set.all()
         visits = family.visit_set.all()
-        visits_this_year_list = []
         for visit in visits:
                 if datetime.date.today().month == visit.get_month():
                     error = 'This family has already visited this month'
-                if int(visit.get_year()) == int(datetime.date.today().year):
-                        visits_this_year_list.append(visit)
-        if len(visits_this_year_list) > 1:
-            family.status = family.ACTIVE
-            family.save(['status'])
-        else:
-            family.status = family.NON_ACTIVE
-            family.save(['status'])
-
         forms = []
         for person in members:
             newPerson = PersonForm(instance=person)

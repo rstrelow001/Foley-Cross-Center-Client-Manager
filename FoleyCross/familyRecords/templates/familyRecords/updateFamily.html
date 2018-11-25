@@ -9,6 +9,7 @@
 {% block moreContent %}
 <form action="" method="post">
     {% csrf_token %}
+    <br>
      <h3>Primary Contact (First Name  Last Name):  {{ form.primary_contact_first_name }} {{form.primary_contact_last_name}} </h3>
     <h3>ID:  {{ family.id }} </h3>
     <h3>Members:  <a href='/familyRecords/newPerson/?familyid={{family.id}}'> Add a Member</a></h3>
