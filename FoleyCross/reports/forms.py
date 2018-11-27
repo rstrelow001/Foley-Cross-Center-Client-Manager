@@ -2,7 +2,7 @@
 class Report:
     def __init__(self, month=0, year=0, total_families=0, total_active_people=0, total_0_5=0, total_6_17=0,
                  combined_total_0_17=0, total_18_24=0, total_25_44=0, total_45_64=0, combined_total_18_64=0,
-                 total_65_plus=0, pounds_of_food=0, total_race_white=0, total_race_black=0, total_race_asian=0,
+                 total_65_plus=0, pounds_of_bread=0, pounds_of_food=0, pounds_of_all_food=0, total_race_white=0, total_race_black=0, total_race_asian=0,
                  total_race_hispanic=0, total_race_nativeAm=0, total_race_hawaiian=0, total_race_two_plus=0,
                  total_race_other=0, foley=0, foreston=0, gilman=0, milaca=0, oak_park=0, princeton=0,
                  rice=0, royalton=0, sartell=0, sauk_rapids=0, st_cloud=0):
@@ -18,7 +18,11 @@ class Report:
         self.total_45_64 = total_45_64
         self.combined_total_18_64 = combined_total_18_64
         self.total_65_plus = total_65_plus
+
+        self.pounds_of_bread = pounds_of_bread
         self.pounds_of_food = pounds_of_food
+        self.pounds_of_all_food = pounds_of_all_food
+
         self.total_race_white = total_race_white
         self.total_race_black = total_race_black
         self.total_race_asian = total_race_asian
