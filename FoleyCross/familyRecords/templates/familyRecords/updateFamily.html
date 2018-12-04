@@ -17,6 +17,7 @@
     <h5>{{person}} Age: {{person.age}}  Status: {{person.status}}  <a href='/familyRecords/updatePerson/?personid={{person.id}}&familyid={{person.family.id}}'>Edit</a></h5>
     {% endfor %}
     <h3>Visits:  <a href='/familyRecords/newVisit/?familyid={{family.id}}'> Add a Visit</a></h3>
+    <h3>Bread Visit: <a href='/familyRecords/breadVisit/?familyid={{family.id}}'> Add Bread Visit</a></h3>
         {%for visit in visits %}
     <h5>{{visit}} Pounds of Food: {{visit.pounds_of_food}} </h5>
     {% endfor %}

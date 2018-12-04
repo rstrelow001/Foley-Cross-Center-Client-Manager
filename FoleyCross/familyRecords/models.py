@@ -232,3 +232,31 @@ class VisitForm(ModelForm):
         # self.visited = self.instance.not_this_month()
         if person_details:
             self.fields['family'] = person_details
+
+class BreadVisit(models.Model):
+    pounds_of_bread = models.IntegerField(default=0)
+    date = models.DateTimeField(default=datetime.date.today())
+    family = models.ForeignKey(Family, on_delete=models.CASCADE)
+    visit_notes = models.TextField(default="NA")
+
+    def get_year(self):
+        return self.date.year
+
+    def get_month(self):
+        return self.date.month
+
+    def __str__(self):
+        return str(self.date)
+
+class BreadVisitForm(ModelForm):
+    class Meta:
+        model= BreadVisit
+        fields = ['pounds_of_bread', 'date', 'family', 'visit_notes']
+        def __init__(self, *args, **kwargs):
+            person_details = kwargs.pop('family', None)
+            super().__init__(*args, **kwargs)
+            # self.visited = self.instance.not_this_month()
+            if person_details:
+                self.fields['family'] = person_details
+   
+
