@@ -107,12 +107,12 @@ class VisitControllerTestCase(TestCase):
     def test_count_age_group_testLower(self):
         vc = VisitController()
         count = vc.count_age_group(Family.objects.get(pk=1), 8, 10)
-        self.assertEqual(count, 1)
+        self.assertEqual(count, 2)
 
     def test_count_age_group_testUpper(self):
         vc = VisitController()
         count = vc.count_age_group(Family.objects.get(pk=1), 8, 10)
-        self.assertEqual(count, 1)
+        self.assertEqual(count, 2)
 
     def test_city(self):
         vc = VisitController()
