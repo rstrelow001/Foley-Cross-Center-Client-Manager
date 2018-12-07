@@ -73,16 +73,15 @@ class VisitControllerTestCase(TestCase):
 
     def setUp(self):
 
-        Family.objects.create(primary_contact_first_name = "Ryan", primary_contact_last_name = "Strelow", date = '2018-10-20',
+        Family.objects.create(primary_contact_first_name = "Ryan", primary_contact_last_name = "Strelow", date = '2018-10-20', city = 'Sartell',
                               child_support = 0.0, fuel_assist = 0.0, general_assist = 0.0, mfip = 0.0, monthly_total = 0.0,
                               pension = 0.0, snap = 0.0, social_security = 0.0, ssi = 0.0, unemployment = 0.0, wages1 = 0.0,
                               wages2 = 0.0, wic = 0.0, workers_comp = 0.0
                               )
 
         Person.objects.create(first_name = "Ryan", last_name = "Strelow", birthday = '2010-10-20', family_id=1, status = "Active", race = "W")
-        Person.objects.create(first_name="Marlyn", last_name="Strelow", birthday='2008-10-20', family_id=1, status = "Active")
+        Person.objects.create(first_name="Marlyn", last_name="Strelow", birthday='2008-10-20', family_id=1, status = "Active", race="B")
         Person.objects.create(first_name="Sam", last_name="Larson", birthday = '1984-01-20', family_id=1, status = "Active", race = "B")
-
 
     def test_count_active_members_returns_2(self):
         vc = VisitController()
@@ -94,8 +93,29 @@ class VisitControllerTestCase(TestCase):
         count = vc.count_number_of_race(Family.objects.get(pk=1), "W")
         self.assertEqual(count, 1)
 
+    def test_count_number_of_race_returns_2(self):
+        vc = VisitController()
+        count = vc.count_number_of_race(Family.objects.get(pk=1), "B")
+        self.assertEqual(count, 2)
+
     #for sure needs more test cases, same with others
     def test_count_age_group_returns_2(self):
         vc = VisitController()
         count = vc.count_age_group(Family.objects.get(pk=1), 6, 17)
         self.assertEqual(count, 2)
+
+    def test_count_age_group_testLower(self):
+        vc = VisitController()
+        count = vc.count_age_group(Family.objects.get(pk=1), 8, 10)
+        self.assertEqual(count, 1)
+
+    def test_count_age_group_testUpper(self):
+        vc = VisitController()
+        count = vc.count_age_group(Family.objects.get(pk=1), 8, 10)
+        self.assertEqual(count, 1)
+
+    def test_city(self):
+        vc = VisitController()
+        city = vc.get_city(Family.objects.get(pk=1))
+        self.assertEquals(city, 'Sartell')
+
