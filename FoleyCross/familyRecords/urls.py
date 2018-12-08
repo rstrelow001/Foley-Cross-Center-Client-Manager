@@ -29,7 +29,8 @@ urlpatterns = [path('', ListView.as_view(queryset=Family.objects.all().order_by(
                path('newVisit/', views.newVisit),
                path('searchAction', views.searchFamily),
                path('search/', views.searchPage),
-               path('breadVisit/', views.breadVisit, name="breadVisit")
+               path('breadVisit/', views.breadVisit, name="breadVisit"),
+               path('specialProjectVisit/', views.specialProjectVisit)
 ]
 
 '''               path('editFamily/', views.editFamily),'''

@@ -258,5 +258,35 @@ class BreadVisitForm(ModelForm):
             # self.visited = self.instance.not_this_month()
             if person_details:
                 self.fields['family'] = person_details
-   
+
+
+class SpecialProject(models.Model):
+    date = models.DateTimeField(default=datetime.date.today())
+    family = models.ForeignKey(Family, on_delete=models.CASCADE)
+    HOLIDAYFOOD1 = "holidayFood1"
+    HOLIDAYFOOD2 = "holidayFood2"
+    SCHOOLSUPPLIES = "schoolSupplies"
+    GIVINGTREE = "givingTree"
+    OTHER = "Other"
+    PROJECT_CHOICES = (
+        (HOLIDAYFOOD1, "Holiday Food 1"),
+        (HOLIDAYFOOD2, "Holiday Food 2"),
+        (SCHOOLSUPPLIES, "School Supplies"),
+        (GIVINGTREE, "Giving Tree"),
+        (OTHER, "Other")
+    )
+    project = models.CharField(max_length=140, choices=PROJECT_CHOICES)
+    project_notes = models.TextField(default="NA")
+    volunteer = models.CharField(max_length=100, default="")
+
+
+class SpecialProjectForm(ModelForm):
+    class Meta:
+        model = SpecialProject
+        fields = ['date', 'family', 'project', 'project_notes', 'volunteer']
+        def _init_(self, *args, **kwargs):
+            person_details = kwargs.pop('family', None)
+            super().__init__(*args, **kwargs)
+            if person_details:
+                self.fields['family'] = person_details
 
