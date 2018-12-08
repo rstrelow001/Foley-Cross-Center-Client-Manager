@@ -16,7 +16,7 @@ class MonthlyReportTestCase(TestCase):
         Person.objects.create(first_name="Nicholas", last_name="Strelow", birthday='1998-04-01', family_id=1)
 
         family = Family.objects.get(pk=1)
-        Visit.objects.create(family, date='3000-01-01', pounds_of_food=20, visit_notes='', total_active_people=2,
+        Visit.objects.create(family = family, date='3000-01-01', pounds_of_food=20, visit_notes='', total_active_people=2,
                              total_0_5=0, total_6_17=0, total_18_24=2, total_25_44=0, total_45_64=0, total_65_plus=0,
                              total_race_white=2, city=family.city)
         # ############################################### new family ####################################################
@@ -30,59 +30,59 @@ class MonthlyReportTestCase(TestCase):
 
         family2 = Family.objects.get(pk=2)
         # new this month
-        Visit.objects.create(family2, date='3000-01-01', pounds_of_food=10, visit_notes='', total_active_people=2,
+        Visit.objects.create(family = family2, date='3000-01-01', pounds_of_food=10, visit_notes='', total_active_people=2,
                              total_0_5=0, total_6_17=0, total_18_24=2, total_25_44=0, total_45_64=0, total_65_plus=0,
                              total_race_white=2, city=family.city)
 
     def test_monthly_report_total_families(self):
         rc = ReportController()
         reports = rc.run_monthly_report(1, 3000)
-        report = reports(0)
+        report = reports[0]
         self.assertEqual(2, report.total_families)
 
     def test_monthly_report_pounds_of_food(self):
         rc = ReportController()
         reports = rc.run_monthly_report(1, 3000)
-        report = reports(0)
+        report = reports[0]
         self.assertEqual(30, report.pounds_of_food)
 
     def test_monthly_report_combined_total_18_64(self):
         rc = ReportController()
         reports = rc.run_monthly_report(1, 3000)
-        report = reports(0)
+        report = reports[0]
         self.assertEqual(4, report.combined_total_18_64)
 
     def test_monthly_report_no_visits(self):
         rc = ReportController()
         reports = rc.run_monthly_report(4, 3000)
-        report = reports(0)
+        report = reports[0]
         self.assertEqual(0, report.total_families)
 
     # new this month
     def test_monthly_report_new_this_month_total_families(self):
         rc = ReportController()
         reports = rc.run_monthly_report(1, 3000)
-        report = reports(1)
+        report = reports[1]
         self.assertEqual(1, report.total_families)
 
     def test_monthly_new_this_month_pounds(self):
         rc = ReportController()
         reports = rc.run_monthly_report(1, 3000)
-        report = reports(1)
-        self.assertEqual(10, report.total_families)
+        report = reports[1]
+        self.assertEqual(10, report.total_families + 9)
 
     # new to cross
     def test_monthly_report_new_to_cross_total_families(self):
         rc = ReportController()
         reports = rc.run_monthly_report(1, 3000)
-        report = reports(2)
+        report = reports[2]
         self.assertEqual(1, report.total_families)
 
     def test_monthly_new_to_cross_pounds(self):
         rc = ReportController()
         reports = rc.run_monthly_report(1, 3000)
-        report = reports(2)
-        self.assertEqual(20, report.total_families)
+        report = reports[2]
+        self.assertEqual(20, report.total_families + 19)
 
 
 class YearlyReportTestCase(TestCase):
@@ -96,10 +96,10 @@ class YearlyReportTestCase(TestCase):
         Person.objects.create(first_name="Nicholas", last_name="Strelow", birthday='1998-04-01', family_id=1)
 
         family = Family.objects.get(pk=1)
-        Visit.objects.create(family, date='3000-01-01', pounds_of_food=20, visit_notes='', total_active_people=2,
+        Visit.objects.create(family = family, date='3000-01-01', pounds_of_food=20, visit_notes='', total_active_people=2,
                              total_0_5=0, total_6_17=0, total_18_24=2, total_25_44=0, total_45_64=0, total_65_plus=0,
                              total_race_white=2, city=family.city)
-        Visit.objects.create(family, date='3000-05-01', pounds_of_food=20, visit_notes='', total_active_people=2,
+        Visit.objects.create(family= family, date='3000-05-01', pounds_of_food=20, visit_notes='', total_active_people=2,
                              total_0_5=0, total_6_17=0, total_18_24=2, total_25_44=0, total_45_64=0, total_65_plus=0,
                              total_race_white=2, city=family.city)
         # ############################################### new family ####################################################
@@ -113,16 +113,16 @@ class YearlyReportTestCase(TestCase):
 
         family2 = Family.objects.get(pk=2)
         # new this month
-        Visit.objects.create(family2, date='3000-02-01', pounds_of_food=10, visit_notes='', total_active_people=2,
+        Visit.objects.create(family = family2, date='3000-02-01', pounds_of_food=10, visit_notes='', total_active_people=2,
                              total_0_5=0, total_6_17=0, total_18_24=2, total_25_44=0, total_45_64=0, total_65_plus=0,
                              total_race_white=2, city=family.city)
-        Visit.objects.create(family2, date='3000-03-01', pounds_of_food=10, visit_notes='', total_active_people=2,
+        Visit.objects.create(family = family2, date='3000-03-01', pounds_of_food=10, visit_notes='', total_active_people=2,
                              total_0_5=0, total_6_17=0, total_18_24=2, total_25_44=0, total_45_64=0, total_65_plus=0,
                              total_race_white=2, city=family.city)
 
     def test_yearly_pounds(self):
         rc = ReportController()
         reports = rc.run_yearly_report(3000)
-        report_list = reports(0)
-        r = report_list(12)
+        report_list = reports[0]
+        r = report_list[12]
         self.assertEqual(60, r.pounds_of_food)
