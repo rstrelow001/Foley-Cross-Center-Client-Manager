@@ -214,7 +214,7 @@ class Visit(models.Model):
         return self.date.month
 
     def __str__(self):
-        return str(self.date)
+        return str(self.date.month) + "-" + str(self.date.day) + "-" + str(self.date.year)
 
 
 class VisitForm(ModelForm):
@@ -259,14 +259,23 @@ class BreadVisitForm(ModelForm):
             if person_details:
                 self.fields['family'] = person_details
 
+    def get_year(self):
+        return self.date.year
+
+    def get_month(self):
+        return self.date.month
+
+    def __str__(self):
+        return str(self.date.month) + "-" + str(self.date.day) + "-" + str(self.date.year)
+
 
 class SpecialProject(models.Model):
     family = models.ForeignKey(Family, on_delete=models.CASCADE)
     date = models.DateTimeField(default=datetime.date.today())
-    HOLIDAYFOOD1 = "holidayFood1"
-    HOLIDAYFOOD2 = "holidayFood2"
-    SCHOOLSUPPLIES = "schoolSupplies"
-    GIVINGTREE = "givingTree"
+    HOLIDAYFOOD1 = "Holiday Food 1"
+    HOLIDAYFOOD2 = "Holiday Food 2"
+    SCHOOLSUPPLIES = "School Supplies"
+    GIVINGTREE = "Giving Tree"
     OTHER = "Other"
     PROJECT_CHOICES = (
         (HOLIDAYFOOD1, "Holiday Food 1"),
@@ -278,6 +287,15 @@ class SpecialProject(models.Model):
     project = models.CharField(max_length=140, choices=PROJECT_CHOICES)
     project_notes = models.TextField(default="NA")
     volunteer = models.CharField(max_length=100, default="")
+
+    def get_year(self):
+        return self.date.year
+
+    def get_month(self):
+        return self.date.month
+
+    def __str__(self):
+        return self.project + ":  " + str(self.date.month) + "-" + str(self.date.day) + "-" + str(self.date.year)
 
 
 class SpecialProjectForm(ModelForm):

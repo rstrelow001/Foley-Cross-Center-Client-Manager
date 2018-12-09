@@ -14,16 +14,39 @@
         {%for person in members %}
     <h5>{{person}} Age: {{person.age}}  Status: {{person.status}}  <a href='/familyRecords/updatePerson/?personid={{person.id}}&familyid={{person.family.id}}'>Edit</a></h5>
     {% endfor %}
-    <h3>Visits:  <a href='/familyRecords/newVisit/?familyid={{family.id}}'> Add a Visit</a></h3>
-        {%for visit in visits %}
-    <h5>{{visit}} Pounds of Food: {{visit.pounds_of_food}} </h5>
+
+
+
+
+    <h3>Visits:  <a href='/familyRecords/newVisit/?familyid={{family.id}}'> Add a Visit</a> </h3>
+          <h5><select name = "list_option_visits" id= "list_option_visits" onchange="visitView()">
+            <option value="none">None</option>
+            {% for visit_year in visit_years %}
+                 <option value="{{visit_year}}">{{visit_year}}</option>
+            {% endfor %}
+    </select> </h5> <h5></h5>
+    {% for visit in visits %}
+        <h5  id="visit_{{forloop.counter0}}" style="display:none">{{visit}} Pounds of Food: {{visit.pounds_of_food}}
+        <input value = "{{visit.get_year}}" id = "visit_{{forloop.counter0}}_year" hidden="true"></h5>
+        {% if forloop.counter0 == forloop.counter0|add:forloop.revcounter0 %}
+            <input value = "{{forloop.counter0|add:forloop.revcounter}}" id = "size" hidden = "true" >
+        {% endif %}
     {% endfor %}
+
+
     <h3>Bread Visit: <a href='/familyRecords/breadVisit/?familyid={{family.id}}'> Add Bread Visit</a></h3>
-    <h3>Special Visits: <a href='/familyRecords/specialProjectVisit/?familyid={{family.id}}'> Add Special Project Visit</a></h3>
-    {%for project in specialProjects %}
-    <h5> Date: {{ specialProject.date }} Special Project: {{ specialProject.project }}   </h5>
+        {%for visit in bread_visits %}
+    <h5> {{visit}}  </h5>
     {% endfor %}
-    <h3>Date:  {{ form.date }} </h3>
+    
+
+    <h3>Special Visits: <a href='/familyRecords/specialProjectVisit/?familyid={{family.id}}'> Add Special Project Visit</a></h3>
+    {%for project in special_projects %}
+    <h5> {{project}}  </h5>
+    {% endfor %}
+
+
+    <h3>Date:  {{ form.date.value }} </h3>{{ form.date.as_hidden }}
     <h3>Proof of Address:  {{ form.proof_of_address }} </h3>
     <h3>Address:  {{form.address}}</h3>
     <h3>City:  {{ form.city }} </h3>
@@ -52,4 +75,34 @@
     <input type="submit" value="Submit">
 </form>
 
+
+
+
+
+<script>
+function visitView() {
+    var i;
+    var toggle = document.getElementById("list_option_visits").value;
+
+
+        for (i = 0; i < document.getElementById("size").value; i++) {
+            var visit_year = document.getElementById("visit_"+ i + "_year").value;
+            if (toggle == "none") {
+                var x = document.getElementById("visit_"+ i);
+                x.style.display = "none";
+            }
+            else {
+                if (toggle == visit_year) {
+                    var x = document.getElementById("visit_"+ i);
+                    x.style.display = "block";
+                }
+                else {
+                   var x = document.getElementById("visit_"+ i);
+                   x.style.display = "none";
+                }
+           }
+        }
+
+}
+</script>
 {% endblock  %}

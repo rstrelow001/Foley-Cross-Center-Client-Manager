@@ -77,16 +77,41 @@ def updateFamily(request):
         family=Family.objects.get(pk=family_id)
         familyForm = FamilyForm(instance=family)
         members= family.person_set.all()
-        visits = family.visit_set.all()
+
+
+        visits = family.visit_set.all().order_by("date")
+        visit_years = []
         for visit in visits:
                 if datetime.date.today().month == visit.get_month():
                     error = 'This family has already visited this month'
+                if not visit_years.__contains__(visit.get_year()):
+                    visit_years.append(visit.get_year())
+        visit_years.sort(reverse=True)
+
+
+        special_projects = family.specialproject_set.all().order_by("date")
+        special_projects_years = []
+        for project in special_projects:
+            if not special_projects_years.__contains__(project.get_year()):
+                special_projects_years.append(project.get_year())
+        special_projects_years.sort(reverse=True)
+
+
+        bread_visits = family.breadvisit_set.all().order_by("date")
+        bread_visit_years = []
+        for visit in bread_visits:
+            if not bread_visit_years.__contains__(visit.get_year()):
+                bread_visit_years.append(visit.get_year())
+        bread_visit_years.sort(reverse=True)
+
         forms = []
         for person in members:
             newPerson = PersonForm(instance=person)
             forms.append(newPerson)
 
-    return render(request, 'familyRecords/updateFamily.html', {'form': familyForm, 'family': family, 'members': members, 'visits': visits, 'status': family.status})
+    return render(request, 'familyRecords/updateFamily.html', {'form': familyForm, 'family': family, 'members': members, 'visits': visits, 'visit_years': visit_years,
+                                                               'special_projects': special_projects, 'special_projects_years': special_projects_years,
+                                                               'bread_visits': bread_visits, 'bread_visit_years': bread_visit_years, 'status': family.status})
 
 def searchFamily(request):
     # if this is a POST request we need to process the form data
