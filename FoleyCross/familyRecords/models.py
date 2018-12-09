@@ -261,8 +261,8 @@ class BreadVisitForm(ModelForm):
 
 
 class SpecialProject(models.Model):
-    date = models.DateTimeField(default=datetime.date.today())
     family = models.ForeignKey(Family, on_delete=models.CASCADE)
+    date = models.DateTimeField(default=datetime.date.today())
     HOLIDAYFOOD1 = "holidayFood1"
     HOLIDAYFOOD2 = "holidayFood2"
     SCHOOLSUPPLIES = "schoolSupplies"
@@ -283,7 +283,7 @@ class SpecialProject(models.Model):
 class SpecialProjectForm(ModelForm):
     class Meta:
         model = SpecialProject
-        fields = ['date', 'family', 'project', 'project_notes', 'volunteer']
+        fields = ['family', 'date', 'project', 'project_notes', 'volunteer']
         def _init_(self, *args, **kwargs):
             person_details = kwargs.pop('family', None)
             super().__init__(*args, **kwargs)

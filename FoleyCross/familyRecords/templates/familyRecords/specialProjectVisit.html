@@ -11,9 +11,10 @@
     {% csrf_token %}
     <h3></h3>
     <h3>Family: {{ form.family }} </h3>
-    <h3> Date: <input type ="date" size="30" class="form-control" value={{ form.date }} ></h3>
+    <h3> Date: <input type ="date" size="30" class="form-control" value = {{form.date}} </h3>
     <h3> Project: {{ form.project }} </h3>
     <h3> Notes: {{ form.project_notes }} </h3>
+    <h3>Volunteer:  {{form.volunteer}} </h3>
 
     <input type="submit" value="Submit">
 </form>

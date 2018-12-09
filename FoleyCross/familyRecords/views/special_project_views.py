@@ -23,6 +23,6 @@ def specialProjectVisit(request):
         '''person = Person.objects.get(pk=1)'''
         id= request.GET.get('familyid', '')
         results = Family.objects.filter(pk=id)
-        form = SpecialProjectForm(family=forms.ModelChoiceField(queryset=results.all(), initial=1))
+        form = SpecialProjectForm()
 
     return render(request, 'familyRecords/specialProjectVisit.html', {'form': form})
