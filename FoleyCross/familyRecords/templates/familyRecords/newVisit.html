@@ -8,11 +8,11 @@
 <form action="" method="post">
     {% csrf_token %}
     <h3></h3>
-    <h3>Family:  {{ form.family }} </h3>
-    <h3>{{error}}</h3>
-    <h3> Date: <input type ="date" size="5" class="form-control" value={{ form.date }} </h3>
-    <h3>Pounds: {{form.pounds_of_food }} </h3>
-    <h3>Notes:  {{ form.visit_notes }} </h3>
+    <h5>Family:  {{ form.family }} </h5>
+    <h5>{{error}}</h5>
+    <h5> Date: <input type ="date" size="5" class="form-control" value={{ form.date }} </h5>
+    <h5>Pounds: {{form.pounds_of_food }} </h5>
+    <h5>Notes:  {{ form.visit_notes }} </h5>
     {{ form.total_active_people.as_hidden }}
     {{ form.total_0_5.as_hidden }}
     {{ form.total_6_17.as_hidden }}
@@ -29,7 +29,7 @@
     {{ form.total_race_two_plus.as_hidden }}
     {{ form.total_race_other.as_hidden }}
     {{ form.city.as_hidden }}
-    <h3>Volunteer:  {{form.volunteer}} </h3>
+    <h5>Volunteer:  {{form.volunteer}} </h5>
 
     <input type="submit" value="Submit">
 </form>

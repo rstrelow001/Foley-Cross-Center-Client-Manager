@@ -77,7 +77,7 @@ def updateFamily(request):
         family=Family.objects.get(pk=family_id)
         familyForm = FamilyForm(instance=family)
         members= family.person_set.all()
-
+        error = ""
 
         visits = family.visit_set.all().order_by("date")
         visit_years = []
@@ -111,7 +111,7 @@ def updateFamily(request):
 
     return render(request, 'familyRecords/updateFamily.html', {'form': familyForm, 'family': family, 'members': members, 'visits': visits, 'visit_years': visit_years,
                                                                'special_projects': special_projects, 'special_projects_years': special_projects_years,
-                                                               'bread_visits': bread_visits, 'bread_visit_years': bread_visit_years, 'status': family.status})
+                                                               'bread_visits': bread_visits, 'bread_visit_years': bread_visit_years, 'status': family.status, 'error': error})
 
 def searchFamily(request):
     # if this is a POST request we need to process the form data

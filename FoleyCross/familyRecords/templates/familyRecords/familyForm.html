@@ -8,32 +8,32 @@
 {% block moreContent %}
 <form action="" method="post">
     {% csrf_token %}
-    <h3>{{error}}</h3>
-    <h3>Primary Contact(First Name  Last Name):  {{ form.primary_contact_first_name }} {{form.primary_contact_last_name}} </h3>
-    <h3>Date:  {{ form.date }} </h3>
-    <h3>Proof of Address:  {{ form.proof_of_address }} </h3>
-    <h3>Address:  {{form.address}}</h3>
-    <h3>City:  {{ form.city }} </h3>
-    <h3>Zip Code  {{ form.zip }} </h3>
-    <h3>Phone #: {{form.phone}}</h3><h3></h3>
-    <h3>MFIP:  {{form.mfip}}</h3>
-    <h3>WIC:  {{form.wic}}</h3>
-    <h3>General Assist:  {{form.general_assist}}</h3>
-    <h3>Workers Comp:  {{form.workers_comp}}</h3>
-    <h3>Pension:  {{form.pension}}</h3>
-    <h3>Social Security: {{form.social_security}}</h3>
-    <h3>SSI: {{form.ssi}}</h3>
-    <h3>Fuel Assist: {{form.fuel_assist}}</h3>
-    <h3>Child Support: {{form.child_support}}</h3>
-    <h3>SNAP: {{form.snap}}</h3>
-    <h3>Unemployment: {{form.unemployment}}</h3>
-    <h3>Wages: {{form.wages1}}</h3>
-    <h3>Wages: {{form.wages2}}</h3>
-    <h3>Medical Insurance/Assistance: {{form.insurance_assistance}}</h3>
+    <h5>{{error}}</h5>
+    <h5>Primary Contact(First Name  Last Name): </h5><h5> {{ form.primary_contact_first_name }} {{form.primary_contact_last_name}} </h5>
+    <h5>Date:  <input type ="date" size="30" class="form-control" value = {{form.date}} </h5>
+    <h5>Proof of Address:  {{ form.proof_of_address }} </h5>
+    <h5>Address:  {{form.address}}</h5>
+    <h5>City:  {{ form.city }} </h5>
+    <h5>Zip Code  {{ form.zip }} </h5>
+    <h5>Phone #: {{form.phone}}</h5><h3></h3>
+    <h5>MFIP:  {{form.mfip}}</h5>
+    <h5>WIC:  {{form.wic}}</h5>
+    <h5>General Assist:  {{form.general_assist}}</h5>
+    <h5>Workers Comp:  {{form.workers_comp}}</h5>
+    <h5>Pension:  {{form.pension}}</h5>
+    <h5>Social Security: {{form.social_security}}</h5>
+    <h5>SSI: {{form.ssi}}</h5>
+    <h5>Fuel Assist: {{form.fuel_assist}}</h5>
+    <h5>Child Support: {{form.child_support}}</h5>
+    <h5>SNAP: {{form.snap}}</h5>
+    <h5>Unemployment: {{form.unemployment}}</h5>
+    <h5>Wages: {{form.wages1}}</h5>
+    <h5>Wages: {{form.wages2}}</h5>
+    <h5>Medical Insurance/Assistance: {{form.insurance_assistance}}</h5>
     {{ form.monthly_total.as_hidden }}
-    <h3>Status: {{form.status}}</h3>
-    <h3>Notes:  {{ form.notes }} </h3>
-    <h3>Volunteer:  {{form.volunteer}} </h3>
+    <h5>Status: {{form.status}}</h5>
+    <h5>Notes:  {{ form.notes }} </h5>
+    <h5>Volunteer:  {{form.volunteer}} </h5>
 
     <input type="submit" value="Submit">
 </form>

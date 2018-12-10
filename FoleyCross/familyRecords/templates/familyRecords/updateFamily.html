@@ -8,69 +8,96 @@
 <form action="" method="post">
     {% csrf_token %}
     <br>
-     <h3>Primary Contact (First Name  Last Name):  {{ form.primary_contact_first_name }} {{form.primary_contact_last_name}} </h3>
-    <h3>ID:  {{ family.id }} </h3>
-    <h3>Members:  <a href='/familyRecords/newPerson/?familyid={{family.id}}'> Add a Member</a></h3>
+    <h5 style="color:red;">{{error}}</h5>
+    <h5>Primary Contact (First Name  Last Name): </h5><h5> {{ form.primary_contact_first_name }} {{form.primary_contact_last_name}} </h5>
+    <h5>ID:  {{ family.id }} </h5>
+    <h5>Members:  <a href='/familyRecords/newPerson/?familyid={{family.id}}'> Add a Member</a></h5>
         {%for person in members %}
-    <h5>{{person}} Age: {{person.age}}  Status: {{person.status}}  <a href='/familyRecords/updatePerson/?personid={{person.id}}&familyid={{person.family.id}}'>Edit</a></h5>
+    <h7>{{person}} Age: {{person.age}}  Status: {{person.status}}  <a href='/familyRecords/updatePerson/?personid={{person.id}}&familyid={{person.family.id}}'>Edit</a></h7><h7></h7>
     {% endfor %}
 
+    <h3></h3>
 
 
 
-    <h3>Visits:  <a href='/familyRecords/newVisit/?familyid={{family.id}}'> Add a Visit</a> </h3>
-          <h5><select name = "list_option_visits" id= "list_option_visits" onchange="visitView()">
-            <option value="none">None</option>
+    <h5>Visits:  <a href='/familyRecords/newVisit/?familyid={{family.id}}'> Add a Visit</a> </h5>
+          <h7><select name = "list_option_visits" id= "list_option_visits" onchange="visitView()">
+            <option value="none">Hidden</option>
             {% for visit_year in visit_years %}
                  <option value="{{visit_year}}">{{visit_year}}</option>
             {% endfor %}
-    </select> </h5> <h5></h5>
+    </select> </h7> <h5></h5>
     {% for visit in visits %}
-        <h5  id="visit_{{forloop.counter0}}" style="display:none">{{visit}} Pounds of Food: {{visit.pounds_of_food}}
-        <input value = "{{visit.get_year}}" id = "visit_{{forloop.counter0}}_year" hidden="true"></h5>
+        <h7  id="visit_{{forloop.counter0}}" style="display:none">{{visit}} Pounds of Food: {{visit.pounds_of_food}}
+        <input value = "{{visit.get_year}}" id = "visit_{{forloop.counter0}}_year" hidden="true"></h7>
         {% if forloop.counter0 == forloop.counter0|add:forloop.revcounter0 %}
             <input value = "{{forloop.counter0|add:forloop.revcounter}}" id = "size" hidden = "true" >
         {% endif %}
     {% endfor %}
 
 
-    <h3>Bread Visit: <a href='/familyRecords/breadVisit/?familyid={{family.id}}'> Add Bread Visit</a></h3>
-        {%for visit in bread_visits %}
-    <h5> {{visit}}  </h5>
+    <h3></h3>
+
+       <h5>Bread Visit:  <a href='/familyRecords/breadVisit/?familyid={{family.id}}'> Add a Bread Visit</a> </h5>
+          <h7><select name = "list_option_bread_visits" id= "list_option_bread_visits" onchange="breadVisitView()">
+            <option value="none">Hidden</option>
+            {% for visit_year in bread_visit_years %}
+                 <option value="{{visit_year}}">{{visit_year}}</option>
+            {% endfor %}
+    </select> </h7> <h5></h5>
+    {% for visit in bread_visits %}
+        <h7  id="bread_visit_{{forloop.counter0}}" style="display:none">{{visit}} Pounds of Bread: {{visit.pounds_of_food}}
+        <input value = "{{visit.get_year}}" id = "bread_visit_{{forloop.counter0}}_year" hidden="true"></h7>
+        {% if forloop.counter0 == forloop.counter0|add:forloop.revcounter0 %}
+            <input value = "{{forloop.counter0|add:forloop.revcounter}}" id = "bread_visit_size" hidden = "true" >
+        {% endif %}
     {% endfor %}
-    
 
-    <h3>Special Visits: <a href='/familyRecords/specialProjectVisit/?familyid={{family.id}}'> Add Special Project Visit</a></h3>
-    {%for project in special_projects %}
-    <h5> {{project}}  </h5>
+
+    <h3></h3>
+
+       <h5>Special Projects:  <a href='/familyRecords/specialProjectVisit/?familyid={{family.id}}'>Add Special Project Visit</a> </h5>
+          <h7><select name = "list_option_special_projects" id= "list_option_special_projects" onchange="specialProjectsView()">
+            <option value="none">Hidden</option>
+            {% for project_year in special_projects_years %}
+                 <option value="{{project_year}}">{{project_year}}</option>
+            {% endfor %}
+    </select> </h7> <h5></h5>
+    {% for visit in special_projects %}
+        <h7  id="special_project_{{forloop.counter0}}" style="display:none">{{visit}}
+        <input value = "{{visit.get_year}}" id = "special_project_{{forloop.counter0}}_year" hidden="true"></h7>
+        {% if forloop.counter0 == forloop.counter0|add:forloop.revcounter0 %}
+            <input value = "{{forloop.counter0|add:forloop.revcounter}}" id = "special_projects_size" hidden = "true" >
+        {% endif %}
     {% endfor %}
 
+    <h3></h3>
 
-    <h3>Date:  {{ form.date.value }} </h3>{{ form.date.as_hidden }}
-    <h3>Proof of Address:  {{ form.proof_of_address }} </h3>
-    <h3>Address:  {{form.address}}</h3>
-    <h3>City:  {{ form.city }} </h3>
-    <h3>Zip Code  {{ form.zip }} </h3>
-    <h3>Phone #: {{form.phone}}</h3><h3></h3>
-    <h3>MFIP:  {{form.mfip}}</h3>
-    <h3>WIC:  {{form.wic}}</h3>
-    <h3>General Assist:  {{form.general_assist}}</h3>
-    <h3>Workers Comp:  {{form.workers_comp}}</h3>
-    <h3>Pension:  {{form.pension}}</h3>
-    <h3>Social Security: {{form.social_security}}</h3>
-    <h3>SSI: {{form.ssi}}</h3>
-    <h3>Fuel Assist: {{form.fuel_assist}}</h3>
-    <h3>Child Support: {{form.child_support}}</h3>
-    <h3>SNAP: {{form.snap}}</h3>
-    <h3>Unemployment: {{form.unemployment}}</h3>
-    <h3>Wages: {{form.wages1}}</h3>
-    <h3>Wages: {{form.wages2}}</h3>
-    <h3>Medical Insurance/Assistance: {{form.insurance_assistance}}</h3>
-    <h3>Status: {{form.status}}</h3>
-    <h3>Monthly Totals:  {{ form.monthly_total.value }} </h3> {{ form.monthly_total.as_hidden }}
+    <h5>Starting Date:  {{ form.date.value }} </h5>{{ form.date.as_hidden }}
+    <h5>Proof of Address:  {{ form.proof_of_address }} </h5>
+    <h5>Address:  {{form.address}}</h5>
+    <h5>City:  {{ form.city }} </h5>
+    <h5>Zip Code  {{ form.zip }} </h5>
+    <h5>Phone #: {{form.phone}}</h5><h3></h3>
+    <h5>MFIP:  {{form.mfip}}</h5>
+    <h5>WIC:  {{form.wic}}</h5>
+    <h5>General Assist:  {{form.general_assist}}</h5>
+    <h5>Workers Comp:  {{form.workers_comp}}</h5>
+    <h5>Pension:  {{form.pension}}</h5>
+    <h5>Social Security: {{form.social_security}}</h5>
+    <h5>SSI: {{form.ssi}}</h5>
+    <h5>Fuel Assist: {{form.fuel_assist}}</h5>
+    <h5>Child Support: {{form.child_support}}</h5>
+    <h5>SNAP: {{form.snap}}</h5>
+    <h5>Unemployment: {{form.unemployment}}</h5>
+    <h5>Wages: {{form.wages1}}</h5>
+    <h5>Wages: {{form.wages2}}</h5>
+    <h5>Medical Insurance/Assistance: {{form.insurance_assistance}}</h5>
+    <h5>Status: {{form.status}}</h5>
+    <h5>Monthly Totals:  {{ form.monthly_total.value }} </h5> {{ form.monthly_total.as_hidden }}
 
-    <h3>Notes:  {{ form.notes }} </h3>
-    <h3>Volunteer:  {{form.volunteer}} </h3>
+    <h5>Notes:  {{ form.notes }} </h5>
+    <h5>Volunteer:  {{form.volunteer}} </h5>
 
     <input type="submit" value="Submit">
 </form>
@@ -81,6 +108,60 @@
 
 <script>
 function visitView() {
+    var i;
+    var toggle = document.getElementById("list_option_visits").value;
+
+
+        for (i = 0; i < document.getElementById("size").value; i++) {
+            var visit_year = document.getElementById("visit_"+ i + "_year").value;
+            if (toggle == "none") {
+                var x = document.getElementById("visit_"+ i);
+                x.style.display = "none";
+            }
+            else {
+                if (toggle == visit_year) {
+                    var x = document.getElementById("visit_"+ i);
+                    x.style.display = "block";
+                }
+                else {
+                   var x = document.getElementById("visit_"+ i);
+                   x.style.display = "none";
+                }
+           }
+        }
+
+}
+</script>
+
+<script>
+function specialProjectsView() {
+    var i;
+    var toggle = document.getElementById("list_option_special_projects").value;
+
+
+        for (i = 0; i < document.getElementById("special_projects_size").value; i++) {
+            var visit_year = document.getElementById("special_project_"+ i + "_year").value;
+            if (toggle == "none") {
+                var x = document.getElementById("special_project_"+ i);
+                x.style.display = "none";
+            }
+            else {
+                if (toggle == visit_year) {
+                    var x = document.getElementById("special_project_"+ i);
+                    x.style.display = "block";
+                }
+                else {
+                   var x = document.getElementById("special_project_"+ i);
+                   x.style.display = "none";
+                }
+           }
+        }
+
+}
+</script>
+
+<script>
+function breadVisitView() {
     var i;
     var toggle = document.getElementById("list_option_visits").value;
 

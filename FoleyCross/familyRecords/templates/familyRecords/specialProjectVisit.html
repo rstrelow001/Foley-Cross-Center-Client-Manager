@@ -10,11 +10,11 @@
 <form action="" method="post">
     {% csrf_token %}
     <h3></h3>
-    <h3>Family: {{ form.family }} </h3>
-    <h3> Date: <input type ="date" size="30" class="form-control" value = {{form.date}} </h3>
-    <h3> Project: {{ form.project }} </h3>
-    <h3> Notes: {{ form.project_notes }} </h3>
-    <h3>Volunteer:  {{form.volunteer}} </h3>
+    <h5>Family: {{ form.family }} </h5>
+    <h5> Date: <input type ="date" size="30" class="form-control" value = {{form.date}} </h5>
+    <h5> Project: {{ form.project }} </h5>
+    <h5> Notes: {{ form.project_notes }} </h5>
+    <h5>Volunteer:  {{form.volunteer}} </h5>
 
     <input type="submit" value="Submit">
 </form>

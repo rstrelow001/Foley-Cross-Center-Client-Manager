@@ -7,16 +7,16 @@
 {% block moreContent %}
 <form action="" method="post">
     {% csrf_token %}
-    <h3>First Name:  {{ form.first_name }} </h3>
-    <h3>Last Name:  {{ form.last_name }} </h3>
-    <h3>Birthday:  {{ form.birthday }} </h3>
-    <h3>Age:   {{form.age}} </h3>
-    <h3>Race:  {{ form.race }} </h3>
-    <h3>Gender:  {{ form.gender }} </h3>
-    <h3>Service:  {{ form.service }} </h3>
-    <h3>Status:  {{ form.status }} </h3>
-    <h3>Family:  {{ form.family }} </h3>
-    <h3>Volunteer:  {{form.volunteer}} </h3>
+    <h5>First Name:  {{ form.first_name }} </h5>
+    <h5>Last Name:  {{ form.last_name }} </h5>
+    <h5>Birthday:  {{ form.birthday }} </h5>
+    <h5>Age:   {{form.age}} </h5>
+    <h5>Race:  {{ form.race }} </h5>
+    <h5>Gender:  {{ form.gender }} </h5>
+    <h5>Service:  {{ form.service }} </h5>
+    <h5>Status:  {{ form.status }} </h5>
+    <h5>Family:  {{ form.family }} </h5>
+    <h5>Volunteer:  {{form.volunteer}} </h5>
     <input type="submit" value="Submit">
 </form>
 {% endblock %}
