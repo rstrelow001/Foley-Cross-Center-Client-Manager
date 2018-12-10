@@ -49,9 +49,12 @@ class ReportController:
 
     def first_visit_of_year(self, family, report_year):
         visit_list = family.visit_set.all()
+        visits_this_year_list = []
         for v in visit_list:
             if int(v.get_year()) == int(report_year):
-                return False
+                visits_this_year_list.append(v)
+        if len(visits_this_year_list) > 1:
+            return False
         return True
 
     def monthly_helper_fields(self, report, visit):
