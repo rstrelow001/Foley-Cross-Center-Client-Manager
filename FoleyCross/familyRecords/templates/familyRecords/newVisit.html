@@ -1,6 +1,7 @@
 {% extends "personal/basicHeader.html" %}
 
 {% block content %}
+    <br>
 	<li><a href='/'>Home</a></li>
 {% endblock %}
 
@@ -10,7 +11,7 @@
     <h3></h3>
     <h5>Family:  {{ form.family }} </h5>
     <h5>{{error}}</h5>
-    <h5> Date: <input type ="date" size="5" class="form-control" value={{ form.date }} </h5>
+    <h5> Date: <input style="width:200px;" type ="date" size="5" class="form-control" value={{ form.date }} </h5>
     <h5>Pounds: {{form.pounds_of_food }} </h5>
     <h5>Notes:  {{ form.visit_notes }} </h5>
     {{ form.total_active_people.as_hidden }}

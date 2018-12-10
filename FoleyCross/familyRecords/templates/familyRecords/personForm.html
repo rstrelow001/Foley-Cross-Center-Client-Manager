@@ -1,15 +1,17 @@
 {% extends "personal/basicHeader.html" %}
 
 {% block content %}
+    <br>
 	<li><a href='/'>Home</a></li>
 {% endblock %}
 
 {% block moreContent %}
 <form action="" method="post">
     {% csrf_token %}
+    <br>
     <h5>First Name:  {{ form.first_name }} </h5>
     <h5>Last Name:  {{ form.last_name }} </h5>
-    <h5>Birthday:  {{ form.birthday }} </h5>
+    <h5>Birthday: <input style="width:200px;" type ="date" size="5" class="form-control" value={{ form.birthday }} </h5>
     <h5>Age:   {{form.age}} </h5>
     <h5>Race:  {{ form.race }} </h5>
     <h5>Gender:  {{ form.gender }} </h5>

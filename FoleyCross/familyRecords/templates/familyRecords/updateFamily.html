@@ -1,7 +1,9 @@
 {% extends "personal/basicHeader.html" %}
 
 {% block content %}
+    <br>
 	<li><a href='/'>Home</a></li>
+    <li><a href='/familyRecords/'>Family Records</a></li>
 {% endblock %}
 
 {% block moreContent %}
@@ -13,7 +15,7 @@
     <h5>ID:  {{ family.id }} </h5>
     <h5>Members:  <a href='/familyRecords/newPerson/?familyid={{family.id}}'> Add a Member</a></h5>
         {%for person in members %}
-    <h7>{{person}} Age: {{person.age}}  Status: {{person.status}}  <a href='/familyRecords/updatePerson/?personid={{person.id}}&familyid={{person.family.id}}'>Edit</a></h7><h7></h7>
+    <h7>{{person}} Age: {{person.age}}  Status: {{person.status}}  <a href='/familyRecords/updatePerson/?personid={{person.id}}&familyid={{person.family.id}}'>Edit</a></h7><h7><br></h7>
     {% endfor %}
 
     <h3></h3>

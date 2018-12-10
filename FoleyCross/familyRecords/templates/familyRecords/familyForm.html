@@ -1,6 +1,7 @@
 {% extends "personal/basicHeader.html" %}
 
 {% block content %}
+    <br>
 	<li><a href='/'>Home</a></li>
     <li><a href='/familyRecords/'>Family Records</a></li>
 {% endblock %}
@@ -10,7 +11,7 @@
     {% csrf_token %}
     <h5>{{error}}</h5>
     <h5>Primary Contact(First Name  Last Name): </h5><h5> {{ form.primary_contact_first_name }} {{form.primary_contact_last_name}} </h5>
-    <h5>Date:  <input type ="date" size="30" class="form-control" value = {{form.date}} </h5>
+    <h5>Date:  <input style="width:200px;" type ="date" size="5" class="form-control" value= {{form.date}} </h5>
     <h5>Proof of Address:  {{ form.proof_of_address }} </h5>
     <h5>Address:  {{form.address}}</h5>
     <h5>City:  {{ form.city }} </h5>
