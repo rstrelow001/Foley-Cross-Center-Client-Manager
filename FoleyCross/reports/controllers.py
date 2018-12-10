@@ -53,7 +53,7 @@ class ReportController:
         for v in visit_list:
             if int(v.get_year()) == int(report_year):
                 visits_this_year_list.append(v)
-        if len(visits_this_year_list) > 1:
+        if len(visits_this_year_list) >= 1:
             return False
         return True
 
