@@ -61,4 +61,4 @@ def updatePerson(request):
         results = Person.objects.get(pk=id)
         form = PersonForm(instance=results)
 
-    return render(request, 'familyRecords/personForm.html', {'form': form})
+    return render(request, 'familyRecords/personForm_update.html', {'form': form})

@@ -11,7 +11,8 @@
     <br>
     <h5>First Name:  {{ form.first_name }} </h5>
     <h5>Last Name:  {{ form.last_name }} </h5>
-    <h5>Birthday: <input style="width:200px;" type ="date" size="5" class="form-control" value={{form.birthday}} </h5> {{form.birthday}}
+    {{form.birthday.as_hidden}}
+    <h5>Birthday: {{form.birthday.value}}</h5>
     <h5>Age:   {{form.age}} </h5>
     <h5>Race:  {{ form.race }} </h5>
     <h5>Gender:  {{ form.gender }} </h5>
