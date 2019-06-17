@@ -15,7 +15,7 @@
     <h5> Date: <input style="width:200px;" type ="date" size="5" class="form-control" value= {{form.date}} </h5>
     <h5> Project: {{ form.project }} </h5>
     <h5> Notes: {{ form.project_notes }} </h5>
-    <h5>Volunteer:  {{form.volunteer}} </h5>
+    {{form.volunteer.as_hidden}}
 
     <input type="submit" value="Submit">
 </form>

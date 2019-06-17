@@ -149,9 +149,9 @@ class Person(models.Model):
     race = models.CharField(max_length=140, choices = RACE_CHOICES)
     gender = models.CharField(max_length=140, choices = GENDER_CHOICES)
     service = models.CharField(max_length=140, choices = YES_NO_CHOICES)
-    status = models.CharField(max_length=140, choices = ACTIVE_NONACTIVE_CHOICES)
+    status = models.CharField(max_length=140, choices = ACTIVE_NONACTIVE_CHOICES, default="Active")
     family = models.ForeignKey(Family, on_delete=models.CASCADE)
-    volunteer = models.CharField(max_length=100, default="")
+    volunteer = models.CharField(max_length=100, default="None")
 
     def __str__(self):
         return self.first_name + " " + self.last_name
@@ -205,7 +205,7 @@ class Visit(models.Model):
     total_race_two_plus = models.IntegerField(default=0)
     total_race_other = models.IntegerField(default=0)
     city = models.CharField(max_length=140, default= "Foley")
-    volunteer = models.CharField(max_length=100, default="")
+    volunteer = models.CharField(max_length=100, default="None")
 
     def get_year(self):
         return self.date.year
@@ -286,7 +286,7 @@ class SpecialProject(models.Model):
     )
     project = models.CharField(max_length=140, choices=PROJECT_CHOICES)
     project_notes = models.TextField(default="NA")
-    volunteer = models.CharField(max_length=100, default="")
+    volunteer = models.CharField(max_length=100, default="None")
 
     def get_year(self):
         return self.date.year

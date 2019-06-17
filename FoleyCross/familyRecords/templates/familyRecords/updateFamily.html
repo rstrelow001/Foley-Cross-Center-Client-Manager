@@ -17,17 +17,10 @@
 
 
     <h5>Members: <a href='/familyRecords/newPerson/?familyid={{family.id}}'> Add a Member</a> </h5>
-          <h7><select name = "list_option_members" id= "list_option_members" onchange="memberView()">
-            <option value="none">Hidden</option>
-              <option value="all">Visible</option>
-
-    </select> </h7> <h5></h5>
+           <h5></h5>
     {% for person in members %}
-        <h7  id="member_{{forloop.counter0}}" style="display:none"> {{person}} Age: {{person.age}}  Status: {{person.status}}  <a href='/familyRecords/updatePerson/?personid={{person.id}}&familyid={{person.family.id}}'>Edit</a>
-            <input value = "null" id = "member_{{forloop.counter0}}_year" hidden="true"></h7>
-        {% if forloop.counter0 == forloop.counter0|add:forloop.revcounter0 %}
-            <input value = "{{forloop.counter0|add:forloop.revcounter}}" id = "size" hidden = "true" >
-        {% endif %}
+        <h7> {{person}} Age: {{person.age}}  Status: {{person.status}}  <a href='/familyRecords/updatePerson/?personid={{person.id}}&familyid={{person.family.id}}'>Edit</a>
+        </h7><br>
     {% endfor %}
 
 
@@ -35,14 +28,20 @@
 
     <h5>Visits:  <a href='/familyRecords/newVisit/?familyid={{family.id}}'> Add a Visit</a> </h5>
           <h7><select name = "list_option_visits" id= "list_option_visits" onchange="visitView()">
-            <option value="none">Hidden</option>
+
             {% for visit_year in visit_years %}
                  <option value="{{visit_year}}">{{visit_year}}</option>
             {% endfor %}
+              <option value="none">Hidden</option>
     </select> </h7> <h5></h5>
     {% for visit in visits %}
-        <h7  id="visit_{{forloop.counter0}}" style="display:none">{{visit}} Pounds of Food: {{visit.pounds_of_food}}
-        <input value = "{{visit.get_year}}" id = "visit_{{forloop.counter0}}_year" hidden="true"></h7>
+        {% if visit.get_year == visit_years|first %}
+            <h7  id="visit_{{forloop.counter0}}" style="display:block">{{visit}} Pounds of Food: {{visit.pounds_of_food}}
+            <input value = "{{visit.get_year}}" id = "visit_{{forloop.counter0}}_year" hidden="true"> </h7>
+        {% else %}
+            <h7  id="visit_{{forloop.counter0}}" style="display:none">{{visit}} Pounds of Food: {{visit.pounds_of_food}}
+            <input value = "{{visit.get_year}}" id = "visit_{{forloop.counter0}}_year" hidden="true"> </h7>
+        {% endif %}
         {% if forloop.counter0 == forloop.counter0|add:forloop.revcounter0 %}
             <input value = "{{forloop.counter0|add:forloop.revcounter}}" id = "size" hidden = "true" >
         {% endif %}
@@ -56,14 +55,20 @@
 
        <h5>Special Projects:  <a href='/familyRecords/specialProjectVisit/?familyid={{family.id}}'>Add a Special Project </a> </h5>
           <h7><select name = "list_option_special_projects" id= "list_option_special_projects" onchange="specialProjectsView()">
-            <option value="none">Hidden</option>
+
             {% for project_year in special_projects_years %}
                  <option value="{{project_year}}">{{project_year}}</option>
             {% endfor %}
+              <option value="none">Hidden</option>
     </select> </h7> <h5></h5>
     {% for visit in special_projects %}
-        <h7  id="special_project_{{forloop.counter0}}" style="display:none">{{visit}}
-        <input value = "{{visit.get_year}}" id = "special_project_{{forloop.counter0}}_year" hidden="true"></h7>
+        {% if visit.get_year == special_projects_years|first %}
+             <h7  id="special_project_{{forloop.counter0}}" style="display:block">{{visit}}
+            <input value = "{{visit.get_year}}" id = "special_project_{{forloop.counter0}}_year" hidden="true"></h7>
+        {% else %}
+            <h7  id="special_project_{{forloop.counter0}}" style="display:none">{{visit}}
+            <input value = "{{visit.get_year}}" id = "special_project_{{forloop.counter0}}_year" hidden="true"></h7>
+        {% endif %}
         {% if forloop.counter0 == forloop.counter0|add:forloop.revcounter0 %}
             <input value = "{{forloop.counter0|add:forloop.revcounter}}" id = "special_projects_size" hidden = "true" >
         {% endif %}
@@ -71,7 +76,7 @@
 
     <h3></h3>
 
-    <h5>Starting Date:  {{ form.date.value }} </h5>{{ form.date.as_hidden }}
+    {{ form.date.as_hidden }}
     <h5>Proof of Address:  {{ form.proof_of_address }} </h5>
     <h5>Address:  {{form.address}}</h5>
     <h5>City:  {{ form.city }} </h5>

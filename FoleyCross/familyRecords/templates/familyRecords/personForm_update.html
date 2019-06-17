@@ -19,7 +19,7 @@
     <h5>Service:  {{ form.service }} </h5>
     <h5>Status:  {{ form.status }} </h5>
     <h5>Family:  {{ form.family }} </h5>
-    <h5>Volunteer:  {{form.volunteer}} </h5>
+    {{form.volunteer.as_hidden}}
     <input type="submit" value="Submit">
 </form>
 {% endblock %}

@@ -16,9 +16,9 @@
     <h5>Race:  {{ form.race }} </h5>
     <h5>Gender:  {{ form.gender }} </h5>
     <h5>Service:  {{ form.service }} </h5>
-    <h5>Status:  {{ form.status }} </h5>
+    {{ form.status.as_hidden }}
     <h5>Family:  {{ form.family }} </h5>
-    <h5>Volunteer:  {{form.volunteer}} </h5>
+    {{form.volunteer.as_hidden}}
     <input type="submit" value="Submit">
 </form>
 {% endblock %}

@@ -11,7 +11,7 @@
     <h3></h3>
     <h5>Family:  {{ form.family }} </h5>
     <h5>{{error}}</h5>
-    <h5> Date: <input style="width:200px;" type ="date" size="5" class="form-control" value={{ form.date }} </h5>
+    <h5> Date: <input style="width:200px;" type ="date" size="5" class="form-control" value={{form.date}}  </h5>
     <h5>Pounds: {{form.pounds_of_food }} </h5>
     <h5>Notes:  {{ form.visit_notes }} </h5>
     {{ form.total_active_people.as_hidden }}
@@ -30,8 +30,9 @@
     {{ form.total_race_two_plus.as_hidden }}
     {{ form.total_race_other.as_hidden }}
     {{ form.city.as_hidden }}
-    <h5>Volunteer:  {{form.volunteer}} </h5>
+    {{form.volunteer.as_hidden}}
 
     <input type="submit" value="Submit">
 </form>
 {% endblock %}
+
