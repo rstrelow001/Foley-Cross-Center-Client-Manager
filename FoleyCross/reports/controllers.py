@@ -31,7 +31,7 @@ class ReportController:
 
                 if self.is_new_to_cross(visit.family, report_month, report_year):
                     self.monthly_helper_fields(new_to_cross, visit)
-                elif self.first_visit_of_year(visit.family, report_year):
+                elif self.first_visit_of_year(visit.family, report_month, report_year):
                     self.monthly_helper_fields(new_this_month, visit)
 
         self.monthly_helper_combined(report)
@@ -40,22 +40,57 @@ class ReportController:
         return report, new_this_month, new_to_cross
 
     def is_new_to_cross(self, family, report_month, report_year):
+
+        #print("Checking for A NEW FAMILY________________________________________________________________________")
         family_date = family.date
         family_month = family_date.month
         family_year = family_date.year
+
+        visit_list = family.visit_set.all().order_by('date')
+
+        print("first visit year: {}\treport year: {}".format(visit_list[0].get_year(), report_year))
+        print("first visit month: {}\treport month: {}".format(visit_list[0].get_month(), report_month))
+        first_visit_year = int(visit_list[0].get_year())
+        first_visit_month = int(visit_list[0].get_month())
+
+        if (first_visit_year == int(report_year)) and first_visit_month == int(report_month):
+            #print("SUCCESS!")
+            return True
+        else:
+            #print("failed.....")
+            return False
+
+
+        '''
+        print("Checking for A NEW FAMILY________________________________________________________________________")
+        family_date = family.date
+        family_month = family_date.month
+        family_year = family_date.year
+        print("family year: {}\t report year: {}".format(family_year, report_year))
         if (int(family_month) == int(report_month)) and (int(family_year) == int(report_year)):
+            print("New FAmily??????")
             return True
         return False
+        '''
 
-    def first_visit_of_year(self, family, report_year):
-        visit_list = family.visit_set.all()
-        visits_this_year_list = []
+    def first_visit_of_year(self, family, report_month, report_year):
+        #print("Checking for a FAMILY FIRST VISIT this year___________________")
+
+        visit_list = family.visit_set.all().order_by("date")
+
+        previously_visited = False
         for v in visit_list:
-            if int(v.get_year()) == int(report_year):
-                visits_this_year_list.append(v)
-        if len(visits_this_year_list) > 1:
-            return False
-        return True
+            if int(v.get_year()) == int(report_year)-1:
+                #print("Previously visited!")
+                previously_visited = True
+            elif (int(v.get_year()) == int(report_year)):
+                if (int(v.get_month() == int(report_month))) and previously_visited:
+                    #print("First Visit of Year: {}".format(v.date))
+                    return True
+                else:
+                    return False
+
+        return False
 
     def monthly_helper_fields(self, report, visit):
         report.total_families += 1
